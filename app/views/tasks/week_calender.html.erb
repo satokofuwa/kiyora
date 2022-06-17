@@ -1,0 +1,32 @@
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    <img src = "/calender.png" width="30" height="30" class="d-inline-block align-top" alt="">
+     <%= "スケジュール管理" %>
+  </a>
+</nav>
+
+<div class= 'calender'>
+<div class="test_box font_test">
+  <%= link_to '月間カレンダー', "/tasks/search", method: :get, class: 'btn btn-outline-primary btn-sm' %>
+  <%= week_calendar events: @events do |date, event| %>
+    <%= date %>
+    <% event.each do |event| %>
+      <br>
+      <% if user_signed_in? %>
+        <% if event.category ==0%>
+          <i class="fa fa-circle notification-circle" style="color: blue;"></i>
+        <% elsif event.category ==1%> 
+          <i class="fa fa-circle notification-circle" style="color: orange;"></i>
+        <% elsif event.category ==2%> 
+          <i class="fa fa-circle notification-circle" style="color: red;"></i>
+        <% else%> 
+          <i class="fa fa-circle notification-circle" style="color: green;"></i>
+        <% end %>       
+          <%= event.start_time.strftime('%H:%M') %>
+          <%= event.vehicle %>
+          <%= link_to event.content,task_path(event) %>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+</div>

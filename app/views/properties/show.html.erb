@@ -1,0 +1,50 @@
+<td><%= link_to t('helpers.link.property_fetch'), properties_path,class: 'btn btn-outline-primary'%></td>
+  <div class="test_box font_test"  >
+  <div class='container'>
+
+    <div class="p-3 mb-2 bg-light text-dark">
+    <div class =row>
+      <div class="col-2">物件名 :</div>
+      <div class="col-2"><%= @property.name%></div>
+    </div>
+    </div>
+
+    <div class="p-3 mb-2 bg-light text-dark">
+     <div class =row>
+      <div class="col-2">郵便番号 : </div>
+      <div class="col-1"> <%= @property.zip %></div>
+    </div>
+    <div class =row>
+      <div class="col-2"> 都道府県 : </div>
+      <div class="col-2"><%= @property.prefecture %></div>
+    </div>
+    <div class =row>
+      <div class="col-2"> 市町村 : </div>
+      <div class="col-2"><%= @property.city %></div>
+    </div>
+    </div>
+   
+      <div class="p-3 mb-2 bg-light text-dark">
+        <div class =row>
+        <div class="col-2"> 住所 : </div>
+        <div class="col-10"><%= @property.address %></div>
+        <div class="col-2"> 電話 : </div>
+        <div class="col-10"><%= @property.tel %></div>
+        </div>
+      </div>
+
+
+      <div class="p-3 mb-2 bg-light text-dark">
+        <div class =row>
+       
+          <div class="col-2"> 管理会社名: </div>
+          <div class="col-10"><%= @agent.name %></div>
+          <div class="col-2"> 担当者名: </div>
+          <div class="col-10"><%= @agent.manager_name %></div>
+
+        </div>
+      </div>
+    
+ 
+  </div><!--container-->
+  </div><!--font-->

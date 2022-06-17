@@ -1,0 +1,64 @@
+
+<style>
+ .container{
+   background: white;
+ }
+</style>
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+  <div class=row>
+    <img src="document.png" width="30" height="30" class="d-inline-block align-top" alt="">
+     <h4 class="title"><%= "物件一覧" %></h4>
+  </div>
+  </a>
+</nav>
+  <%= search_form_for( @q, url: properties_path) do |f| %>
+    <div class="row">
+      <div class="row-cols-auto">
+        <%= f.search_field :name_cont,class: 'form-control form-control-sm', placeholder: "例　賃貸マンション"  %>
+      </div>
+      <div class="row-cols-auto">
+        <%= f.submit '物件検索', class: 'btn btn-outline-primary btn-sm' %>
+      </div>
+    </div>
+  <% end %>
+
+<%= flash[:notice] %>
+<%= form_with model: @property, url:properties_path, scope: :property, local: true do |form| %>
+<div class="test_box font_test">
+<table class="table table-sm">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col"><%= t(' ') %></th>
+      <th scope="col"><%= t(' ') %></th>
+      <th scope="col"><%= t('物件名') %></th>
+      <th scope="col"><%= t('郵便番号') %></th>
+      <th scope="col"><%= t('都道府県') %></th>
+      <th scope="col"><%= t('市町村') %></th>
+      <th scope="col"><%= t('住所') %></th>
+      <th scope="col"><%= t('電話番号') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @properties.each do |property| %>
+      <tr> 
+        <td><%= link_to t('helpers.submit.links.property_update')+"#{property.id}", edit_property_path(property.id), class: "btn btn-outline-primary" %></td>
+        <td><%= link_to t('helpers.submit.links.do_show'), property_path(property.id), class:'btn btn-outline-success' %>
+        <% if current_user.admin? %>
+          <td><%= link_to t('helpers.submit.links.delete'), property_path(property.id), method: :delete, class: 'btn btn-outline-danger', data: { confirm: '削除してよろしいですか？'} %></td>
+        <%end%>
+        <td><%= property.name %></td>
+        <td><%= property.zip %></td>
+        <td><%= property.prefecture %></td>
+        <td><%= property.city %></td>
+        <td><%= property.address %></td>
+        <td><%= property.tel %></td>
+      </tr>
+    <% end %>
+  </tbody>
+  </table>
+
+<% end %>
+ </div>
+
+
