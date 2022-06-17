@@ -5,12 +5,9 @@
 
 require("@rails/ujs").start()
 require('jquery')
-require("@nathanvda/cocoon")
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
-import 'cocoon-js';
-require ("src/cocoon")
 require("bootstrap")
 
 // Uncomment to copy all static images under ../images to the output folder and reference
