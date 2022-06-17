@@ -1,0 +1,62 @@
+ <%= form_with(model: @agent,local: true) do |form| %>
+    <% if @agent.errors.any? %>
+      <div id="error_explanation">
+      <p class="error"><%= @agent.errors.count %>件のエラーがあります。</p>
+      <ul>
+        <% @agent.errors.full_messages.each do |msg| %>
+          <li class="error"><%= msg %></li>
+        <% end %>
+      </ul>
+      </div>
+    <% end %>
+  <%= @date %>
+    <div class="container">
+    <div class="p-3 mb-2 bg-light text-dark">
+    <div class="row ">
+    <div class="col">
+      <%= form.label "会社名" %>
+      <%= form.text_field :name, class: 'form-control form-control-sm', placeholder: "例　株式会社建設土建" %>
+    </div>
+    <div class="col-2">
+      <%= form.label "伝票No" %>
+      <%= form.text_field :task_id , class: 'form-control form-control-sm', placeholder: "例　10000"%>
+    </div>
+    <div class="col">
+      <%= form.label "担当者名" %>
+      <%= form.text_field :manager_name , class: 'form-control form-control-sm', placeholder: "例　山田"%>
+    </div>
+    </div>
+    </div>
+  
+
+  <div class="p-3 mb-2 bg-light text-dark">
+  <div class="row">
+
+  <div class="col-4">
+    <%= form.label "電話番号" %>
+    <%= form.text_field :tel , class: 'form-control form-control-sm', placeholder: "例　000-000-0000"%>
+  </div>
+  <div class="col-4">
+    <%= form.label "郵便番号" %>
+    <%= form.text_field :zip, class: 'form-control form-control-sm', placeholder: '0000000 7桁' %>
+  </div>
+  <div class="col-4">
+    <%= form.label "都道府県" %>
+    <%= form.text_field :prefecture, class: 'form-control form-control-sm', placeholder: '例　東京都' %>
+  </div>
+  <div class="col-6">
+    <%= form.label "市町村" %>
+    <%= form.text_field :city, class: 'form-control form-control-sm', placeholder: '例　世田谷区用賀' %>
+  </div>
+    <div class="col-6">
+    <%= form.label "住所" %>
+    <%= form.text_field :address, class: 'form-control form-control-sm', placeholder: '例　1111-11' %>
+  </div>
+  </div>
+  </div>
+  <div>
+    <td><%= form.submit "更新", class:'btn btn-outline-primary' %>
+  </div>
+<% end %>
+</div>
+

@@ -10,7 +10,11 @@ Rails.application.routes.draw do
     post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
     post 'users/admin_guest_sign_in', to: 'users/sessions#admin_guest_sign_in'
   end
-
+  get 'tasks/search'
+  get 'tasks/sales'
+  get 'tasks/task_search'
+  get 'record_pdfs/index'
+  delete 'agent/:id', to: 'agent#destroy'
   resources :users, only: %i[index new create show]
   resources :tasks do
     collection do
@@ -22,7 +26,6 @@ Rails.application.routes.draw do
     member do
       resources :workers
     end
-  
     member do
       resources :users
     end
@@ -40,5 +43,5 @@ Rails.application.routes.draw do
   resources :customers,only: %i[show]
   resources :claims
   resources :relationships, only: %i[create destroy]
-
+  resources :record_pdfs,only: %i[show]
 end
