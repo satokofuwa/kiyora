@@ -1,0 +1,115 @@
+
+<style>
+ .container{
+   background: white;
+ }
+</style>
+
+ 
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    <img src="document.png" width="30" height="30" class="d-inline-block align-top" alt="">
+     <%= "伝票一覧" %>
+  </a>
+</nav>
+
+<%= notice %>
+<div class="test_box font_test"  >
+  <div class="form-group">
+    <%= form_with model: @task, url:tasks_path, scope: :task, method: :get, local: true do |form| %>
+    <div class="container">
+      <div class="row">
+        <%= search_form_for( @q, url: tasks_path) do |f| %>
+          <div class="row-cols-auto">
+            <%= f.search_field :id_eq ,class: 'form-control form-control-sm', placeholder: "例　10000" %>
+            <!-- <%= f.search_field "#{:id_cont}".to_s ,class: 'form-control form-control-sm' %>-->
+          </div>
+          <div class="row-cols-auto">
+             <%= f.submit '伝票No検索', class: 'btn btn-outline-primary btn-sm'%>
+          </div>
+
+    <%= search_form_for( @q, url: tasks_path) do |f| %>
+  <div class="row-cols-auto">
+    <%= f.search_field :properties_name_cont ,class: 'form-control form-control-sm', placeholder: "例　賃貸マンション" %>
+  </div>
+   <div class="row-cols-auto">
+    <%= f.submit '物件検索', class: 'btn btn-outline-primary btn-sm' %>
+  </div>
+  <%= link_to 'クリア', url_for, class: 'btn btn-outline-primary btn-sm' %>
+  </div><!--formgroup-->
+  <br>
+  <div class="form-group">
+  <div class="row">
+ 
+    <div class="row-cols-auto">
+      <%= link_to t('物件一覧'),properties_path, method: :get, class: 'btn btn-outline-primary btn-sm' %>
+    </div>
+    <div class="row-cols-auto">
+      <%= link_to t('管理会社情報一覧検索'),agents_path, method: :get, class: 'btn btn-outline-primary btn-sm' %>
+      </div>
+    <div class="row-cols-auto">
+      <%= link_to t('スケジュール検索'),tasks_search_path, class: 'btn btn-outline-primary btn-sm' %>
+    </div>
+    <div class="row-cols-auto">
+      <%= link_to t('売上検索'),tasks_sales_path, class: 'btn btn-outline-primary btn-sm' %>
+    </div>
+      <div class="row-cols-auto">
+      <%= link_to t('伝票検索'),tasks_task_search_path, class: 'btn btn-outline-primary btn-sm' %>
+    </div>
+  </div>
+  </div><!--form_group-->
+  </div>
+</div>
+<% end %>
+<% end %>
+
+<table class="table table-sm">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col"><%= t(' ') %></th>
+      <th scope="col"><%= t(' ') %></th>
+      <th scope="col"><%= t(' ') %></th>
+      <th scope="col"><%= t(' ') %></th>
+      <th scope="col-2"><%= t('.id') %></th>
+      <th scope="col"><%= t('.name') %></th>
+      <th scope="col"><%= t('.dispatch') %></th>
+      <th scope="col"><%= t('.support_at') %></th>
+      <th scope="col"><%= t('.start_time') %></th>
+      <th scope="col"><%= t('.end_time') %></th>
+      <th scope="col"><%= t('.category') %></th>
+      <th scope="col"><%= t('.step') %></th>
+      <th scope="col"><%= t('.sales') %></th>
+      <th scope="col"><%= t('.sales_check') %></th>
+      <th scope="col"><%= t('.admin_check') %></th>
+      <th scope="col"><%= t('.confirmation') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%@tasks.each do |task| %>
+      <tr>       
+        <td><%= link_to "#{t('helpers.submit.links.do_edit')}", edit_task_path(task.id) , class:'btn btn-outline-primary btn-sm text-nowrap '%></td>
+        <% if current_user.admin? %>
+          <td><%= link_to t('helpers.submit.links.delete'), task_path(task.id), method: :delete, class: 'btn btn-outline-danger btn-sm', data: { confirm: '削除してよろしいですか？'} %></td>
+        <%end%>
+        <td><%= link_to t('helpers.submit.links.do_show'), task_path(task.id),class: "btn btn-outline-success btn-sm", style: '--bs-btn-font-size: .55rem;'%></td>
+            <% @customer = Customer.find_by(task_id: task.id) %>
+       <td><%= link_to t('helpers.link.do_show_customer'), customer_path(@customer.id),class: "btn btn-outline-success btn-sm", style: '--bs-btn-font-size: .55rem;'%></td>
+        <td> <%= link_to "請求書PDF",record_pdf_path(task.id,format: "pdf") %> </td>
+        <td><%= task.id %></td>
+        <td nowrap><%= task.name %></td>
+        <td><%= task.dispatch %></td>
+        <td nowrap><%= task.support_at.strftime("%m月%d日").to_s %></td>
+        <td><%= task.start_time.strftime("%m月%d日").to_s %></td>
+        <td><%= task.end_time.strftime("%m月%d日").to_s %></td>
+        <td><%= task.category %></td>
+        <td><%= task.step %></td>
+        <td><%= task.sales %></td>
+        <td><%= task.sales_check %></td>
+        <td><%= task.admin_check %></td>
+        <td><%= task.confirmation %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% end %>
+</div>
