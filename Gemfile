@@ -28,6 +28,8 @@ group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'spring'
+  gem 'rails-i18n'
+  gem 'devise-i18n'
 end
 
 group :development do

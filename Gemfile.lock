@@ -95,6 +95,8 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise-i18n (1.10.2)
+      devise (>= 4.8.0)
     erubi (1.10.0)
     faker (2.20.0)
       i18n (>= 1.8.11, < 2)
@@ -188,6 +190,9 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.4.3)
       loofah (~> 2.3)
+    rails-i18n (7.0.3)
+      i18n (>= 0.7, < 2)
+      railties (>= 6.0.0, < 8)
     rails_admin (3.0.0)
       activemodel-serializers-xml (>= 1.0)
       kaminari (>= 0.14, < 2.0)
@@ -294,6 +299,7 @@ DEPENDENCIES
   cancancan
   capybara (>= 2.15)
   devise
+  devise-i18n
   faker
   gimei
   jbuilder (~> 2.7)
@@ -305,6 +311,7 @@ DEPENDENCIES
   pry-rails
   puma (~> 4.1)
   rails (= 6.0.3)
+  rails-i18n
   rails_admin (~> 3.0)
   ransack
   rexml
