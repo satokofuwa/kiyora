@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+</head>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</script>
+  <body>
+      <%= search_form_for( @q, url: search_tasks_path) do |f| %>
+      <%= f.search_field :properties_name_cont %>
+      <%= f.submit '検索' %>
+      <% end %>
+      
+    <%= form_with(model: @task, local: true) do |form| %>
+      <% if @task.errors.any? %>
+        <div id="error_explanation">
+        <p class="error"><%= @task.errors.count %>件のエラーがあります。</p>
+        <ul>
+          <% @task.errors.full_messages.each do |msg| %>
+            <li class="error"><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <p><%= notice %></p>
+    <%= @date %><br>
+    <div class=form-group>
+      <th><%= form.label :dispatch %></th>
+      <td><%= form.select :dispatch, Task.dispatches.keys.to_a, {} %><td>
+      <th><%= form.label :category %><th>
+      <td><%= form.select :category, Task.statuses.keys.to_a, {} %><td>
+    </div>
+     
+      <%= search_form_for( @q, url: search_tasks_path) do |f| %>
+      <%= f.search_field :properties_name_cont %>
+      <%= f.submit '検索' %>
+      <% end %>
+
+    <%= form.fields_for :properties , @task.properties.build do |property_form| %>
+      <div class="field">
+        <th><%= property_form.label "物件名" %></th>
+        <td><%= property_form.text_field :name %><td>
+        <%= form.fields_for :agents , @task.agents.build do |agent_form| %>
+        <th><%= agent_form.label "担当者" %></th>
+        <td><%= agent_form.text_field :manager_name %><td>
+        <% end %>
+      </div>
+      <div class="field">
+        <th><%= property_form.label "住所" %></th>
+        <td><%= property_form.text_field :address %><td>
+      </div>
+      <div class="field">
+        <th><%= property_form.label "郵便番号" %></th>
+        <td><%= property_form.text_field :zip %><td>
+      </div>
+    <% end %>
+
+    <%= form.fields_for :partners , @task.partners.build do |partner_form| %>
+      <div class="field">
+        <th><%= partner_form.label "協力会社" %></th>
+        <td><%= partner_form.text_field :name %><td>
+       </div> 
+    
+      <script type="text/javascript">
+        $(document).on("click", ".add", function() {$(this).parent().clone(true).insertAfter($(this).parent())});
+        $(document).on("click", ".del", function() {
+        var target = $(this).parent();
+        if (target.parent().children().length > 1) {
+        target.remove();
+        }
+      });
+      </script>
+      <div class="actions" >
+        <div id="input_pluralBox">
+        <div id="input_plural">
+          <th><%= partner_form.label "作業員" %></th>
+          <td><%= partner_form.text_field :worker %><td>
+          <th><%= partner_form.label "売上" %></th>
+        <td><%= partner_form.text_field :sales %><td>
+          <input type="button" value="＋" class="add pluralBtn">
+          <input type="button" value="－" class="del pluralBtn">
+        </div>
+        </div>
+      </div>
+    <% end %>
+    <div>
+
+    <%= form.fields_for :front_managers , @task.front_managers.build do |manager_form| %>
+      <div class="field">
+         <th><%= manager_form.label "管理人" %></th>
+          <td><%= form.select :manager, [["有", 0], ["無", 1]], include_blank: "選択して下さい" %><td>
+       <th><%= manager_form.label "勤務日" %></th>
+        <td><%= manager_form.text_field :support_at %><td>
+        <th><%= manager_form.label "勤務時間" %></th>
+        <td><%= manager_form.text_field :office_hours %><td>
+        <th><%= manager_form.label "備考" %></th>
+        <td><%= manager_form.text_field :content %><td>
+      </div>
+    <% end %>
+
+    <th><%= form.label "作業名" %></th>
+    <td><%= form.text_field :name %><td>
+
+    <div >
+      <th><%= form.label "作業日" %></th>
+      <td><%= form.date_field :support_at %>
+      <th><%= form.label "作業開始" %></th>
+      <td><%= form.time_field :start_time %><td>
+      <th><%= form.label "作業終了" %></th>
+      <td><%= form.time_field :end_time %><td>
+    </div>
+
+    <%= form.fields_for :workers , @task.workers.build do |worker_form| %>
+      <div class="field">
+        <th><%= form.label "作業員名" %></th>
+        <td><%= worker_form.text_field :name %><td>
+    <% end %>
+        <th><%= form.label "作業車両" %></th>
+        <td><%= form.text_field :vehicle %><td>
+      </div>
+   
+      <div class="field">
+        <th><%= form.label "作業開始" %></th>
+        <td><%= form.time_field :start_from %><td>
+        <th><%= form.label "作業終了" %></th>
+        <td><%= form.time_field :end_at %><td>
+      </div>
+
+    <%= form.fields_for :customer , @task.customers.build do |worker_form| %>
+      <div class="field">
+        <th><%= form.label "顧客名" %></th>
+        <td><%= worker_form.text_field :name %><td>
+           <th><%= form.label "部屋番号" %></th>
+        <td><%= worker_form.text_field :room_number %><td>
+      <div>
+      <div class="field">
+        <th><%= form.label "連絡先" %></th>
+        <td><%= worker_form.text_field :tel %><td>
+      <div>
+    <% end %>  
+
+      <th><%= form.label "作業内容" %></th>
+      <td><%= form.text_field :content %><td>
+    <div>
+      <td><%= form.submit "Confirm", class: "submit-send" %>
+    </div>
+<% end %>
+</body>
+</html>

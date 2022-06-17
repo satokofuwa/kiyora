@@ -1,0 +1,88 @@
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    <img src = "/calender.png" width="30" height="30" class="d-inline-block align-top" alt="">
+     <%= "スケジュール管理" %>
+  </a>
+</nav>
+<div class="test_box font_test">
+<%= search_form_for @q , url:search_tasks_path,scope: :task, method: :get, local: true do |f| %> 
+
+<div class="row">
+ <div class="col">
+<%= f.date_field :support_at_eq, include_blank: true,class: 'form-control form-control-sm'%>
+<%= link_to 'クリア', url_for, class: 'btn btn-outline-primary btn-sm' %>
+   </div>
+      <div class="col">        
+  <%= f.submit '作業予定日検索', class: 'btn btn-outline-primary btn-sm' %>
+  </div>
+
+  <div class="col">
+<%= f.date_field :start_time_gteq,include_blank: true,class: 'form-control form-control-sm'%>
+
+ <%= link_to 'クリア', url_for, class: 'btn btn-outline-primary btn-sm' %>
+    </div>
+  <span>~</span>
+   <div class="col">
+<%= f.date_field :end_time_lteq_end_of_day, include_blank: true,class: 'form-control form-control-sm'%>
+      </div>   
+      <div class="col">        
+  <%= f.submit '作業開始.終了検索', class: 'btn btn-outline-primary btn-sm' %>
+  </div>
+<% end %>
+
+<div class="col">
+  <%= link_to '週間カレンダー', "/tasks/week_calender", method: :get, class: 'btn btn-outline-primary btn-sm' %>
+</div>
+</div>
+
+<table class="table table-sm">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col"><%= t('作業名') %></th>
+      <th scope="col"><%= t('出動区分') %></th>
+      <th scope="col"><%= t('作業予定日') %></th>
+      <th scope="col"><%= t('作業開始時間') %></th>
+      <th scope="col"><%= t('作業終了時間') %></th>
+      <th scope="col"><%= t('出動内容') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%@events.each do |event| %>
+        <td><%= event.name %></td>
+        <td><%= event.dispatch %></td>
+        <td><%= event.support_at %></td>
+        <td><%= event.start_time.strftime("%m月-%d日 %H時:%M分")%></td>
+        <td><%= event.end_time.strftime("%m月-%d日 %H時:%M分") %></td>
+        <td><%= event.category %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class= 'calender'>
+
+  <%= month_calendar events: @events do |date, event| %>
+      <%= date %>
+      <% event.each do |event| %>
+      <br>
+      <% if user_signed_in? %>
+         
+        <% if event.category ==0%>
+          <i class="fa fa-circle notification-circle" style="color: blue;"></i>
+        <% elsif event.category ==1%> 
+          <i class="fa fa-circle notification-circle" style="color: orange;"></i>
+        <% elsif event.category ==2%> 
+          <i class="fa fa-circle notification-circle" style="color: red;"></i>
+        <% else%> 
+          <i class="fa fa-circle notification-circle" style="color: green;"></i>
+        <% end %>    
+            <%= event.start_time.strftime('%H:%M') %>
+            <%= event.vehicle %>
+           <%= link_to event.content,task_path(event) %>
+      <% end %>
+      <% end %>
+    <% end %>
+</div>
+</div>
+
+

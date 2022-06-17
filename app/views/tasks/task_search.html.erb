@@ -1,0 +1,62 @@
+
+
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    <img src = "/calender.png" width="30" height="30" class="d-inline-block align-top" alt="">
+     <%= "伝票検索画面" %>
+  </a>
+</nav>
+
+<div class="test_box font_test">
+<%= search_form_for @q , url:tasks_task_search_path,scope: :task, method: :get, local: true do |f| %> 
+  <div class="container">
+  <div class="row">
+      <div class="row-cols-auto">
+      <%= "伝票番号" %>
+        <td><%= f.collection_select :id_eq, Task.all, :id, :id, {prompt: "選択してください"}, {class: "form-control form-control-sm"} %><td>
+      </div>
+      <div class="col">
+      <%= "作業開始" %>
+        <td> <%= f.date_field :start_time_gteq,include_blank: true,class: 'form-control form-control-sm'%><td>
+      </div>
+        <span>〜</span>
+      <div class="col">
+      <%= "作業終了" %>
+        <td><%= f.date_field :end_time_lteq_end_of_day, include_blank: true,class: 'form-control form-control-sm'%><td>
+      </div>   
+
+      <div class="row-cols-auto">
+        <td><%= f.submit '作業開始 終了検索', class: 'btn btn-outline-primary btn-sm' %></td>
+      </div>
+      
+    </div>
+<% end %>
+  </div>
+<table class="table table-sm">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col"><%= t('作業名') %></th>
+      <th scope="col"><%= t('出動区分') %></th>
+      <th scope="col"><%= t('作業日') %></th>
+      <th scope="col"><%= t('作業開始時間') %></th>
+      <th scope="col"><%= t('作業終了時間') %></th>
+      <th scope="col"><%= t('出動内容') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%@events.each do |event| %>
+        <td><%= event.name %></td>
+        <td><%= event.dispatch %></td>
+        <td><%= event.support_at %></td>
+        <td><%= event.start_time.strftime("%Y年%m月%d日 %H時%M分").to_s %></td>
+        <td><%= event.end_time.strftime("%Y年%m月%d日 %H時%M分").to_s %></td>
+        <td><%= event.category %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+</div>
+
+
+ 

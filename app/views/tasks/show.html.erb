@@ -1,0 +1,84 @@
+<div class="test_box font_test"  >
+  <div class='container'>
+    <h6><%= t('helpers.link.do_detail')  %></h6> 
+      <div class="p-3 mb-2 bg-light text-dark">
+      <div class =row>
+        <div class="col-2">伝票番号 :</div>
+        <div class="col-2"><%= @task.id%></div>
+      </div>
+      </div>
+      
+      <div class="p-3 mb-2 bg-light text-dark">
+      <div class =row>
+        <div class="col-2">作業名 : </div>
+        <div class="col-1"> <%= @task.name %></div>
+      </div>
+        
+      <div class =row>
+        <div class="col-2">出動区分 : </div>
+        <div class="col-1"> <%= @task.dispatch %></div>
+      </div>
+      <div class =row>
+        <div class="col-2"> 対応日 : </div>
+        <div class="col-2"><%=@task.support_at.strftime("%Y年%m月%d日").to_s %></div>
+      </div>
+      <div class =row>
+        <div class="col-2"> 作業開始時間 : </div>
+        <div class="col-2"><%=@task.start_time.strftime("%H時%M分").to_s %></div>
+      </div>
+      <div class =row>
+        <div class="col-2"> 出動内容 : </div>
+        <div class="col-2"><%=@task.category %></div>
+      </div>
+        <div class =row>
+          <div class="col-2"> 作業予定日 : </div>
+          <div class="col-2"><%=@task.support_at %></div>
+      </div>
+  </div>
+   
+  <% @task.properties.each do |property| %>
+  <h6><%= t('helpers.link.property_fetch') %></h6>
+  <div class="p-3 mb-2 bg-light text-dark">
+    <div class =row>
+      <div class="col-2">物件名 : </div>
+      <div class="col-1"> <%= property.name %></div>
+    </div>
+      <div class =row>
+      <div class="col-2">郵便番号 : </div>
+      <div class="col-1"><%= property.zip %></div>
+    </div>
+      <div class =row>
+      <div class="col-2">市町村 : </div>
+      <div class="col-1"> <%= property.city %></div>
+    </div>
+      <div class =row>
+      <div class="col-2">住所 : </div>
+      <div class="col-3"> <%= property.address %></div>
+    </div>
+    </div>
+  <% end %>
+
+  <% @task.agents.each do |agent| %>
+    <h6><%= t('helpers.link.property_fetch') %></h6>
+    <div class="p-3 mb-2 bg-light text-dark">
+      <div class =row>
+        <div class="col-2">管理会社名 : </div>
+        <div class="col-1"> <%= agent.name %></div>
+      </div>
+        <div class =row>
+        <div class="col-2">郵便番号　: </div>
+        <div class="col-1"><%= agent.zip %></div>
+      </div>
+        <div class =row>
+        <div class="col-2">市町村 : </div>
+        <div class="col-1"> <%= agent.city %></div>
+      </div>
+      <div class =row>
+        <div class="col-2">住所 : </div>
+        <div class="col-3"><%=agent.address %></div>
+      </div>
+      </div> 
+       </div>
+        </div>
+  <% end %>
+   

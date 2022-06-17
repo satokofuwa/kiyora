@@ -1,0 +1,90 @@
+<div class="test_box font_test">
+<nav class="navbar navbar-light bg-light justify-content-start">
+  <a class="navbar-brand" href="#"></a>
+    <img src = "/calender.png" width="30" height="30" class="d-inline-block align-left" alt="">
+     <%= "売上検索" %>
+</nav>
+
+<div class="container">
+    <div class="row">
+
+<%= search_form_for @q , url:tasks_sales_path, scope: :task, method: :get, local: true do |f| %> 
+<div class="container">
+  <div class="row">
+    <div class="col">伝票番号検索
+      <%= f.search_field :id_eq,class: 'form-control form-control-sm', placeholder: "例　10000"%>
+    </div>
+    <div class="col">作業日検索
+      <%= f.date_field :support_at_eq, include_blank: true,class: 'form-control form-control-sm'%>
+    </div>   
+     <div class="col"><br>       
+      <%= f.submit '売上検索', class: 'btn btn-outline-primary btn-sm' %>
+       <%= link_to 'クリア', url_for, class: 'btn btn-outline-primary btn-sm' %>
+    </div>
+  </div><!--row-->
+</div><!--container-->
+<% end %>
+
+<%= search_form_for @q , url:tasks_sales_path, scope: :task, method: :get, local: true do |f| %> 
+<div class="container">
+  <div class ="row">
+    <div class="col">月検索
+      <%= f.label :support_at, "期間"%>
+      <div class="row-cols-auto">
+        <%= raw sprintf(    #rawモード行編集を無効にして指定されたブロックを評価する<%==　文字列をエスケープせずに出力
+          f.date_select(
+          :support_at_during_month,
+          discard_day: true, #日付には1が入る
+          use_month_numbers: true,
+          date_separator: '%s'),
+          '年 ') + '月' %>
+      </div> 
+    </div>  
+   
+     <div class ="row">
+    <div class="col">    
+      <%= f.submit '売上検索', class: 'btn btn-outline-primary btn-sm' %>
+    </div>
+     <div class="col">   
+       <%= link_to 'クリア', url_for, class: 'btn btn-outline-primary btn-sm' %>
+    </div>
+    </div>
+  </div>
+   </div>
+<% end %>
+<br>
+<table class="table table-sm">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col"><%= t('伝票No') %></th>
+      <th scope="col"><%= t('作業日') %></th>
+      <th scope="col"><%= t('作業名') %></th>
+      <th scope="col"><%= t('出動区分') %></th>
+      <th scope="col"><%= t('売上金') %></th>
+      <th scope="col"><%= t('税込') %></th>
+      <th scope="col"><%= t('出動内容') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%sales =0%>
+    <%@events.each do |event| %>
+        <td><%= event.id %></td>
+        <td><%= event.support_at %></td>
+        <td><%= event.name %></td>
+        <td><%= event.dispatch %></td>
+        <td><%= event.sales %></td>
+        <% salse_tax = event.sales+event.sales*0.1%>
+        <td><%= salse_tax %></td>
+        <td><%= event.content %></td>
+      </tr>
+      <%sales += event.sales %>
+    <% end %>
+    <br>
+      当月売上金額合計:   <%= sales %></div>   
+      当月税込売上金額合計:   <%= sales + sales * 0.1 %>
+  </tbody>
+</table>
+</div>
+</div>
+</div><!--test_box font_test-->
+
