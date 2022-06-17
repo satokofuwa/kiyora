@@ -1,0 +1,70 @@
+<div class="test_box font_test">
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    <img src="/agent.png" width="30" height="30" class="d-inline-block align-top" alt="">
+     <%= "管理会社一覧" %>
+  </a>
+</nav>
+<%= search_form_for( @q, url: agents_path) do |f| %>
+    <div class="container">
+    <div class="row">
+    <div class="row-cols-auto">
+      <%= f.search_field :name_cont, class: 'form-control form-control-sm', placeholder: "例　株式会社建設土建"  %>
+    </div>
+    <div class="row-cols-auto">
+      <%= f.submit '管理会社検索', class: 'btn btn-outline-primary' %>
+      <%= link_to 'クリア', url_for, class: 'btn btn-outline-primary btn-sm' %>  
+    </div>
+    <div class="row-cols-auto">
+      <%= link_to '管理会社一覧', agents_path, class: 'btn btn-outline-primary' %>
+    </div>
+    </div>
+    </div>
+<% end %>
+
+<%=notice%>
+<%= form_with model: @agents, url:agents_path, local: true do |form| %>
+
+<table class="table table-sm">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col"><%= t(' ') %></th>
+      <th scope="col"><%= t('会社名') %></th>
+      <th scope="col"><%= t('郵便番号') %></th>
+      <th scope="col"><%= t('都道府県') %></th>
+      <th scope="col"><%= t('市町村') %></th>
+      <th scope="col"><%= t('住所') %></th>
+      <th scope="col"><%= t('電話番号') %></th>
+      <th scope="col"><%= t('担当者名') %></th>
+      <th scope="col"><%= t('作成日時') %></th>
+      <th scope="col"><%= t('更新日時') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @agents.each do |agent| %>
+      <tr> 
+      <td><%= link_to t('helpers.submit.links.task_update'), edit_agent_path(agent.id), class:'btn btn-outline-primary btn-sm text-nowrap'%></td> 
+        <% if current_user.admin? %>
+        <div class="col-1">  
+        <td><%= link_to t('helpers.submit.links.delete'), agent_path(agent.id), method: :delete, class: 'btn btn-outline-danger btn-sm', data: { confirm: '削除してよろしいですか？'} %></td>
+        </button></td>
+        </div>
+        <%end%>
+        <td  width="120"><%= agent.name %></td>
+        <td><%= agent.zip %></td>
+        <td><%= agent.prefecture %></td>
+        <td><%= agent.city %></td>
+        <td><%= agent.address %></td>
+        <td><%= agent.tel %></td>
+        <td><%= agent.manager_name %></td>
+        <td><%= agent.created_at.strftime("%Y年%m月%d日 %H時%M分").to_s %></td>
+        <td><%= agent.updated_at.strftime("%Y年%m月%d日 %H時%M分").to_s %></td>
+      </tr>
+    <% end %>
+<% end %>
+  </tbody>
+ </table>
+ </div>
+
+
+
