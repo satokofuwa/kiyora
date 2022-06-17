@@ -1,0 +1,139 @@
+ja:
+  activerecord:
+    models:
+      task: 伝票
+      properties: 物件
+      agents: 管理会社
+      partners: 協力会社
+      customers: 顧客
+      workers: 作業員
+      admins: 管理者
+      task_partners: 伝票協力会社
+      task_workers: 伝票作業者
+      task_follows: 伝票フォロー 
+      claim: クレーム
+      invoices: 請求書
+    attributes:
+      task:
+        new: 新規伝票登録
+        index: 機能一覧
+        id: 伝票番号
+        name: 作業名
+        dispatch: 出動区分
+        address:	住所
+        zip: 郵便番号
+        partner: 協力会社
+        name: 作業員 
+        sales : 売上金額
+        content: 作業内容
+        support_at: 作業日
+        start_time: 作業開始
+        end_time: 作業終了
+        category: 出動内容
+        name: 作業名
+        step: 進捗
+        sales_check: 売上チェック
+        admin_check: 承認欄
+        vehicle: 作業車両
+        sales: 売上金
+        confirmation: 作業確認欄
+        partner_manager: 管理会社担当者
+      save:
+        create: 登録が完了しました。
+        error: エラーが発生しました。
+      properties:
+        task_id: 伝票id
+        name: 物件名
+        zip: 郵便番号
+        prefecture: 都道府県
+        city: 市町村
+        address: 住所
+        tel: 電話番号
+      agents:
+        task_id:	伝票id
+        name:	会社名
+        zip:	郵便番号
+        prefecture:	都道府県
+        city:	市町村
+        address:	住所
+        tel:	電話番号
+        manager_name:	担当者名
+      front_managers:
+        task_id:	伝票id
+        name:	管理人
+        tel:	電話番号
+        support_at:	対応日
+        office_hours:	対応時間
+        content:	備考欄
+      partners:
+        name:	会社名
+        sales:	売上金額
+        worker:	作業員
+        contact:	連絡先
+      customers:
+        task_id:	伝票id
+        name:	名前
+        zip:	郵便番号
+        address:	住所
+        tel:	連絡先
+        room_number:	部屋番号
+      workers:
+        name: 作業員氏名
+      admins:
+        task_id: 伝票id
+        name: 管理者名前
+      invoices:  
+        task_id: task_id
+        invoice_no: 請求書No
+        issued_on: 発行日
+        support_at: 作業日
+        tax_included: 税込額
+        bank: 振込先銀行名
+        content: 備考欄
+      claim: 
+        task: 伝票番号
+        task_id: 伝票番号
+        troubled_at: 日時
+        category: クレームカテゴリ
+        content:  発生内容
+        support_content: 対応内容
+  layouts:
+    application:
+        overview: 伝票一覧
+        create: 伝票登録
+        connect: 伝票連携
+        claims: クレーム情報
+        sales: 売上検索
+        logout: ログアウト
+        login: ログイン
+        new: 新規登録
+        admin: 管理者
+  tasks:
+    property:
+        name: 物件名
+    index:
+        update: 伝票更新
+        index: 伝票一覧
+        id: 伝票番号
+        name: 作業名
+        dispatch: 出動区分
+        content: 作業内容
+        support_at: 作業日
+        start_time: 作業開始時間
+        end_time: 作業終了時間
+        category: 出動内容
+        step: 進捗情報
+        sales_check: 売上確認
+        admin_check: 承認欄
+        vehicle: 作業車両
+        sales: 売上金
+        confirmation: 作業確認連絡欄
+        partner_manager: 管理会社担当者
+    new:
+        create_task: 新規伝票作成
+        dispatch: 出動区分
+    create:
+        save:
+          create: 登録が完了しました。
+          error: エラーが発生しました
+   
