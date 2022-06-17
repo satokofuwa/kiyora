@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   root 'homes#index'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, controllers: {
@@ -10,7 +11,7 @@ Rails.application.routes.draw do
     post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
     post 'users/admin_guest_sign_in', to: 'users/sessions#admin_guest_sign_in'
   end
-  
+
   resources :users, only: %i[index new create show]
   resources :tasks do
     collection do
