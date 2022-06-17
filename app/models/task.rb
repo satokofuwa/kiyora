@@ -11,7 +11,14 @@ class Task < ApplicationRecord
   validates :sales_check, presence: true
   validates :admin_check, presence: true
   validates :sales, presence: true
-
+  
+  has_many :agents, dependent: :destroy
+  has_many :properties, dependent: :destroy
+  has_many :front_managers, dependent: :destroy
+  has_many :invoices, dependent: :destroy
+  has_many :customers, dependent: :destroy
+  has_many :users, dependent: :destroy
+  has_many :claims, dependent: :destroy
   has_many :task_partners,dependent: :destroy
   has_many :partners, through: :task_partners, source: :partner
   has_many :task_workers, dependent: :destroy
