@@ -1,0 +1,2 @@
+class TaskPartner < ApplicationRecord
+end
