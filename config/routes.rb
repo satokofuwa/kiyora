@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
     post 'users/admin_guest_sign_in', to: 'users/sessions#admin_guest_sign_in'
   end
+  get 'tasks/search'
   delete 'agent/:id', to: 'agent#destroy'
   resources :users, only: %i[index new create show]
   resources :tasks do
