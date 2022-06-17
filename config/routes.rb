@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'tasks/search'
   get 'tasks/sales'
   get 'tasks/task_search'
+  et 'record_pdfs/index'
   delete 'agent/:id', to: 'agent#destroy'
   resources :users, only: %i[index new create show]
   resources :tasks do
@@ -43,5 +44,5 @@ Rails.application.routes.draw do
   resources :customers,only: %i[show]
   resources :claims
   resources :relationships, only: %i[create destroy]
-
+  resources :record_pdfs,only: %i[show]
 end
