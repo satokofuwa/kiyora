@@ -1,0 +1,237 @@
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</script>
+  <body>
+  <%= form_with(model: @task, local: true) do |form| %>
+    <div class="container">
+      <% if @task.errors.any? %>
+        <div id="error_explanation">
+          <p class="error"><%= @task.errors.count %>件のエラーがあります。</p>
+            <ul>
+              <% @task.errors.full_messages.each do |msg| %>
+              <li class="error"><%= msg %></li>
+              <% end %>
+            </ul>
+        </div>
+      <% end %>
+      <%= @date %>
+      <%= notice %>
+      <div class="p-3 mb-2 bg-light text-dark">
+        <div class="row ">
+          <div class="col-4">
+            <%= form.label "伝票番号" %>
+            <%= @task.id %>
+          </div>
+          <div class="col-4">
+            <%= form.label :dispatch %>
+            <%= form.select :dispatch, Task.dispatches.keys.to_a, {}, class: 'form-control form-control-sm'%>
+          </div>
+          <div class="col-4">
+            <%= form.label :category %>
+            <%= form.select :category, Task.categories.keys.to_a, {}, class: 'form-control form-control-sm'%>
+          </div>
+        </div>
+      </div>
+  <%= form.fields_for(:properties, @task.properties[0]) do |property_form|%>
+    <div class="p-3 mb-2 bg-light text-dark">
+      <div class="row">
+        <div class="col-6">
+          <%= property_form.label "物件名" %>
+          <%= property_form.text_field :name, class: 'form-control form-control-sm', placeholder: "例　グリーンマンション" %>
+        </div>
+        <div class="col-6">
+          <%= property_form.label "電話" %>
+          <%= property_form.text_field :tel , class: 'form-control form-control-sm', placeholder: "例　000-000-0000"%>
+        </div>
+      </div>
+    </div>
+    <div class="p-3 mb-2 bg-light text-dark">
+      <div class="row">
+        <div class="col-2">
+          <%= property_form.label "郵便番号" %></th>
+          <%= property_form.text_field :zip, class: 'form-control form-control-sm', placeholder: '0000000 7桁'%>
+        </div>
+        <div class="col-3">
+          <%= property_form.label "都道府県"%></th>
+          <%= property_form.text_field :prefecture, class: 'form-control form-control-sm', placeholder: '例　東京都'%>
+        </div>
+        <div class="col-3">
+          <%= property_form.label "市町村" %></th>
+          <%= property_form.text_field :city, class: 'form-control form-control-sm', placeholder: '例　世田谷区用賀'%><td> 
+        </div>
+        <div class="col-4">
+          <%= property_form.label "住所" %></th>
+          <%= property_form.text_field :address, class: 'form-control form-control-sm', placeholder: '例　1111-11'%>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <% @task.partners.each do |partner| %>
+    <div class="p-3 mb-2 bg-light text-dark">
+      <div class="row">
+        <div class="col-2">
+          <%= "協力会社" %>
+          <%= partner.name%>
+        </div>
+          <div class="col-3">
+             <%=  "作業員" %>
+             <%= partner.worker%>
+          </div>
+          <div class="col-3">
+            <%= "連絡先" %>
+            <%= partner.contact%>
+          </div>
+          <div class="col-2">
+            <%= "売上"%> 
+            <%= partner.sales%>
+          </div>
+        </div>
+      </div>
+  <% end %>
+  <%= form.fields_for :front_managers , @task.front_managers do |manager_form| %>
+    <div class="p-3 mb-2 bg-light text-dark">
+      <div class="row">
+        <div class="col">
+          <%= manager_form.label "管理人" %>
+          <%= manager_form.select :manager, [["無", 1],["有", 2]],{}, {class: "form-control form-control-sm"} %>
+        </div>
+        <div class="col">
+          <%= manager_form.label "勤務日" %>
+          <%= manager_form.text_field :support_at, class: 'form-control form-control-sm', placeholder: '例　月-金'  %>
+        </div>
+        <div class="col">
+          <th><%= manager_form.label "勤務時間" %></th>
+          <td><%= manager_form.time_field :office_hours, class: 'form-control form-control-sm', placeholder: '例　10:00-16:00'  %><td>
+        </div>    
+        <div class="col">
+          <th><%= manager_form.label "備考" %></th>
+          <td><%= manager_form.text_field :content, class: 'form-control form-control-sm', placeholder: '例　お知らせ配布なし'  %><td>
+        </div>   
+      </div>
+    </div>
+  <% end %>
+
+  <%= form.fields_for :workers ,@task.workers.first do |worker_form| %>
+    <div class="p-3 mb-2 bg-light text-dark">
+      <div class="row">
+        <div class="col-5"> 
+          <%= worker_form.label "作業員名"  %>
+          <%= worker_form.text_field :name, class: 'form-control form-control-sm', placeholder: '例　田中　太郎' %><td>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+    <div class="p-3 mb-2 bg-light text-dark">
+      <div class="row">
+        <div class="col"> 
+          <%= form.label "作業車両" %></th>
+          <%= form.text_field :vehicle , class: 'form-control form-control-sm', placeholder: '例　1号車' %>
+        </div>
+        <div class="col"> 
+          <%= form.label "作業名" %></th>
+          <%= form.text_field :name , class: 'form-control form-control-sm', placeholder: '例　設備清掃' %>
+        </div>
+        <div class="col"> 
+          <%= form.label "作業日" %></th>
+          <%= form.date_field :support_at, class: 'form-control form-control-sm' %>
+        </div>
+        <div class="col"> 
+          <%= form.label "作業開始" %></th>
+          <%= form.time_field :start_time, class: 'form-control form-control-sm' %>
+        </div>
+        <div class="col">
+          <%= form.label "作業終了" %>
+          <%= form.time_field :end_time, class: 'form-control form-control-sm' %>
+        </div>
+      </div>
+    </div>
+   
+  <%= form.fields_for :customers , @task.customers do |customer_form| %>
+    <div class="p-3 mb-2 bg-light text-dark">
+      <div class="row">
+        <div class="col"> 
+          <%= form.label "顧客名" %>
+          <%= customer_form.text_field :name, class: 'form-control form-control-sm', placeholder: '例　田中　太郎'%>
+        </div>
+        <div class="col">
+          <%= form.label "部屋番号" %></th>
+          <%= customer_form.text_field :room_number, class: 'form-control form-control-sm', placeholder: '例　101号室' %>
+        </div>
+        <div class="col">
+          <%= form.label "連絡先" %></th>
+          <%= customer_form.text_field :tel, class: 'form-control form-control-sm', placeholder: '例　000-000-0000' %>
+        </div>
+        if customer_form.prefecture == ""
+        <div class="col">
+          <%= form.label "都道府県" %></th>
+          <%= customer_form.text_field :prefecture, class: 'form-control form-control-sm', placeholder: "例　東京都" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-3 mb-2 bg-light text-dark">
+      <div class="row">
+        <div class="col-2">
+          <%= form.label "郵便番号" %></th>
+          <%= customer_form.text_field :zip, class: 'form-control form-control-sm', placeholder: '例 0000000' %>
+        </div>
+        <div class="col">
+          <%= form.label "住所" %></th>
+          <%= customer_form.text_field :address, class: 'form-control form-control-sm', placeholder: '例　世田谷区1-1-1' %>
+        </div> 
+      </div> 
+    </div> 
+  <% end %>  
+    <div class="p-3 mb-2 bg-light text-dark">
+      <div class="row">
+        <div class="col-12">
+          <th><%= form.label "作業内容" %></th>
+          <td><%= form.text_field :content, class: 'form-control form-control-sm', placeholder: '例　3年1回定期設備検査' %>
+        </div> 
+      </div>
+    </div>
+
+    <div class="p-3 mb-2 bg-light text-dark">
+      <div class="row">   
+        <div class="col">
+          <%= form.label "進捗状況" %></th>
+          <%= form.select :step, Task.steps.keys.to_a, {}, {:class => "form-control form-control-sm"} %>
+        </div>
+        <div class="col">
+          <span style="font-size:12px;">
+          <%= form.label "売上確定チェック" %>
+          <span>
+          <%= form.check_box :sales_check,{},"未確定","確定"%>
+        </div>     
+        <div class="col"> 
+          <span style="font-size:12px;"> 
+          <%= form.label "承認チェック" %></th>
+          <span>
+          <%= form.check_box :admin_check,{},"未承認","承認" %>
+        </div> 
+        <div class="col">    
+          <%= form.label "売上金" %></th>
+          <%= form.text_field :sales, class: 'form-control form-control-sm', placeholder: '税抜入力 例　19800' %>
+        </div>
+        <div class="col">  
+          <%= form.label "作業確認連絡欄" %></th>
+          <%= form.select :confirmation, Task.confirmations.keys.to_a, {}, {:class => "form-control form-control-sm"} %>
+        </div>
+      </div>
+    </div>
+    <div class="p-3 mb-2 bg-light text-dark">
+      <div class="row">
+        <div class="col-4">  
+          <%= form.label "更新日時" %></th>
+          <%= form.date_field :updated_at, class: 'form-control form-control-sm' %>
+        </div>
+      </div><!--row-->
+    </div><!--p-3 mb-2 bg-light text-dark-->
+    <div>
+      <td><%= form.submit "登録", class:'btn btn-outline-primary btn-sm' %>
+    </div>
+<% end %>
+</div>   
+ 
