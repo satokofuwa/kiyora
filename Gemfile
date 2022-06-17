@@ -13,6 +13,10 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'gimei'
 gem 'seed-fu'
 gem 'faker'
+gem 'devise'
+gem 'cancancan'
+gem 'rexml'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry-rails'
