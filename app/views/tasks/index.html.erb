@@ -1,9 +1,4 @@
 
-<style>
- .container{
-   background: white;
- }
-</style>
 
 <nav class="navbar navbar-light bg-light">
   <a class="navbar-brand" href="#">
@@ -62,10 +57,10 @@
 <% end %>
 <% end %>
 
-<table class="table table-sm">
+<table class="table table-sm",id="table03">
   <thead class="thead-light">
     <tr>
-      <th scope="col"><%= t(' ') %></th>
+      <th scope="col"><%= t(' ') %></th> 
       <th scope="col"><%= t(' ') %></th>
       <th scope="col"><%= t(' ') %></th>
       <th scope="col"><%= t(' ') %></th>
@@ -90,10 +85,10 @@
         <% if current_user.admin? %>
           <td><%= link_to t('helpers.submit.links.delete'), task_path(task.id), method: :delete, class: 'btn btn-outline-danger btn-sm', data: { confirm: '削除してよろしいですか？'} %></td>
         <%end%>
-        <td><%= link_to t('helpers.submit.links.do_show'), task_path(task.id),class: "btn btn-outline-success btn-sm", style: '--bs-btn-font-size: .55rem;'%></td>
+        <td nowrap><%= link_to t('helpers.submit.links.do_show'), task_path(task.id),class: "btn btn-outline-success btn-sm", style: '--bs-btn-font-size: .55rem;'%></td>
             <% @customer = Customer.find_by(task_id: task.id) %>
-       <td><%= link_to t('helpers.link.do_show_customer'), customer_path(@customer.id),class: "btn btn-outline-success btn-sm", style: '--bs-btn-font-size: .55rem;'%></td>
-        <td> <%= link_to "請求書PDF",record_pdf_path(task.id,format: "pdf") %> </td>
+       <td nowrap><%= link_to t('helpers.link.do_show_customer'), customer_path(@customer.id),class: "btn btn-outline-success btn-sm", style: '--bs-btn-font-size: .55rem;'%></td>
+        <td nowrap> <%= link_to "請求書PDF",record_pdf_path(task.id,format: "pdf") %> </td>
         <td><%= task.id %></td>
         <td nowrap><%= task.name %></td>
         <td><%= task.dispatch %></td>

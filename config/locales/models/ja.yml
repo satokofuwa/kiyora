@@ -2,17 +2,20 @@ ja:
   activerecord:
     models:
       task: 伝票
-      properties: 物件
-      agents: 管理会社
-      partners: 協力会社
-      customers: 顧客
-      workers: 作業員
-      admins: 管理者
-      task_partners: 伝票協力会社
-      task_workers: 伝票作業者
-      task_follows: 伝票フォロー 
-      claim: クレーム
+      property: 物件
+      agent: 管理会社
+      partner: 協力会社
+      customer: 顧客
+      worker: 作業員
+      admin: 管理者
+      task_partner: 伝票協力会社
+      task_worker: 伝票作業者
+      task_follow: 伝票フォロー 
+      claim: クレーム情報
       invoices: 請求書
+      relationship: 伝票連携
+      invoice: 請求書
+      front_manager: 管理人
     attributes:
       task:
         new: 新規伝票登録
@@ -136,4 +139,5 @@ ja:
         save:
           create: 登録が完了しました。
           error: エラーが発生しました
+   
    

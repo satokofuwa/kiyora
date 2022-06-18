@@ -49,6 +49,12 @@ class Task < ApplicationRecord
   enum admin_check: {"未承認": 0, "承認": 1}
   enum admin: { "管理者": true, "社員": false}
   
+  def sum_of_sales
+    sales * 0.1
+  end
+  def check_user
+    redirect_to tasks_path, notice: '伝票作成者以外はアクセスできません' if @task.user_id != current_user.id
+  end
   # def valid_prefecture?
   # if @customer.prefectures=="埼玉県"
   #  @customer.prefectures.sub!(/埼玉県/, 'Saitama-ken')

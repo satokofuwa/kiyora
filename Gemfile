@@ -23,6 +23,8 @@ gem 'prawn'
 gem 'prawn-table'
 gem 'simple_calendar', '~>2.0'
 gem 'dotenv-rails'
+gem 'rails-i18n'
+gem 'devise-i18n'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -30,8 +32,10 @@ group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'spring'
-  gem 'rails-i18n'
-  gem 'devise-i18n'
+  gem 'rspec-rails'
+  gem 'spring-commands-rspec'
+  gem 'factory_bot_rails'
+  gem 'launchy'
 end
 
 group :development do
@@ -41,12 +45,9 @@ group :development do
 end
 
 group :test do
-  # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
-  # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
 end
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
