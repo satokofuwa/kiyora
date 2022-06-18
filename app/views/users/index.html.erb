@@ -1,0 +1,43 @@
+<nav class="navbar bg-light">
+  <a class="navbar-brand" href="#">
+    <img src="/follow.png" width="30" height="30" class="d-inline-block align-top" alt="">
+    伝票フォロー
+  </a>
+</nav>
+  <%= notice %>
+  <table class="table table-sm">
+   <thead>
+     
+      <tr>
+      <div class="row">
+      <div class="col-2">
+        <%= t('社員名') %>
+      </div>
+      <div class="col-4">
+        <%= t('email') %>
+       </div>
+      <div class="col-3">
+       <%= t('伝票番号') %>
+       </div>
+      </tr>
+    </thead>
+  </table>
+
+  <% @users.each do |user| %>
+    <div class="p-3 mb-2 bg-light text-dark">
+    <div class="row">
+    <div class="col-2">
+    <%= user.name %>
+    </div>
+    <div class="col-4">
+     <%= user.email %>
+    </div>
+    <div class="col-2">
+     <%= user.task_id%>
+    </div>
+    </div>
+     </div>
+   
+     <%= render 'follow_form', user: user %>
+  <% end %>
+ 
