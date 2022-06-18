@@ -4,8 +4,8 @@
     <%= "クレーム情報一覧" %>
   </a>
 </nav>
-<%= link_to t('クレーム情報新規作成'),new_claim_path, class: 'btn btn-outline-primary btn-sm' %>  
 <div class="test_box font_test"  > 
+<%= link_to t('クレーム情報新規作成'),new_claim_path, class: 'btn btn-outline-primary btn-sm' %> 
 <%=notice%>
   <%= form_with model: @claim,url:claims_path, local: true do |claim| %>  
       <table class="table table-sm">
