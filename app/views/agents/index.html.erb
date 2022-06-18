@@ -1,4 +1,3 @@
-<div class="test_box font_test">
 <nav class="navbar navbar-light bg-light">
   <a class="navbar-brand" href="#">
     <img src="/agent.png" width="30" height="30" class="d-inline-block align-top" alt="">
@@ -8,20 +7,20 @@
 <%= search_form_for( @q, url: agents_path) do |f| %>
     <div class="container">
     <div class="row">
-    <div class="row-cols-auto">
+    <div class="col-3">
       <%= f.search_field :name_cont, class: 'form-control form-control-sm', placeholder: "例　株式会社建設土建"  %>
     </div>
     <div class="row-cols-auto">
-      <%= f.submit '管理会社検索', class: 'btn btn-outline-primary' %>
+      <%= f.submit '管理会社検索', class: 'btn btn-outline-primary btn-sm' %>
       <%= link_to 'クリア', url_for, class: 'btn btn-outline-primary btn-sm' %>  
     </div>
     <div class="row-cols-auto">
-      <%= link_to '管理会社一覧', agents_path, class: 'btn btn-outline-primary' %>
+      <%= link_to '管理会社一覧', agents_path, class: 'btn btn-outline-primary btn-sm' %>
     </div>
     </div>
     </div>
 <% end %>
-
+<div class="test_box font_test">
 <%=notice%>
 <%= form_with model: @agents, url:agents_path, local: true do |form| %>
 

@@ -1,0 +1,32 @@
+<div id="follow_form_<%= user.id %>">
+  <% unless current_user.following?(user) %>
+      
+      <%= form_with(model: current_user.active_relationships.build(followed_id: user.id)) do |f| %>
+      
+        <%= f.hidden_field :followed_id %>
+          <div class=row>
+          <div class=col-2>
+            <%= link_to "詳細", user_path(user.id), class: "col btn btn btn-cool-blues btn-rounded btn-sm" %>
+          </div>
+       <div class=col-2>
+            <%= f.submit "フォロー", class:"col btn btn-dark-blue btn-rounded", id: "blue" %>
+          </div>
+          </div>
+      <% end %>
+  <% else %>
+      <%= form_with(model: current_user.active_relationships.find_by(followed_id: user.id), method: :delete ) do |f| %>
+          <div class=row>
+          <div class=col-2>
+          <%= link_to "詳細", user_path(user.id), class: 'col btn btn btn-cool-blues btn-rounded btn-sm' %> 
+         </div>
+         <div class=col-2>
+          <%= f.submit "フォロー解除" , class: "col btn btn-funky-moon btn-rounded", id: "funky"%>
+   </div>
+   </div>
+
+      <% end %>
+     
+  <% end %>
+</div>
+
+

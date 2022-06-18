@@ -48,4 +48,11 @@ class Task < ApplicationRecord
   enum sales_check: {"未確定": 0, "確定": 1}
   enum admin_check: {"未承認": 0, "承認": 1}
   enum admin: { "管理者": true, "社員": false}
+  
+  # def valid_prefecture?
+  # if @customer.prefectures=="埼玉県"
+  #  @customer.prefectures.sub!(/埼玉県/, 'Saitama-ken')
+  # end
+  #end
+  
 end

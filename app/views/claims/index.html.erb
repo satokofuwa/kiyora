@@ -1,0 +1,44 @@
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    <img src="warning.png" width="30" height="30" class="d-inline-block align-top" alt="">
+    <%= "クレーム情報一覧" %>
+  </a>
+</nav>
+<div class="test_box font_test"  > 
+<%= link_to t('クレーム情報新規作成'),new_claim_path, class: 'btn btn-outline-primary btn-sm' %> 
+<%=notice%>
+  <%= form_with model: @claim,url:claims_path, local: true do |claim| %>  
+      <table class="table table-sm">
+        <thead>
+          <tr>  
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col">クレーム発生日</th>
+            <th scope="col">クレームカテゴリ</th>
+            <th scope="col">発生内容</th>
+            <th scope="col">対応内容</th>
+          </tr>
+        </thead>
+      <tbody>
+      <% @claims.each do |claim| %>
+        <tr>
+          
+          <td><%= link_to t('helpers.submit.links.do_edit'), edit_claim_path(claim.id),class:'btn btn-outline-primary btn-sm' %></td>
+      
+          <% if current_user.admin? %>
+            <td><%= link_to t('helpers.submit.links.delete'), claim_path(claim.id), method: :delete, class: 'btn btn-outline-danger btn-sm', data: { confirm: '削除してよろしいですか？'} %></td>  
+          <%end%>
+          <td> <%= link_to t('helpers.submit.links.do_show'), claim_path(claim.id),class: "btn btn-outline-success btn-sm", style: '--bs-btn-font-size: .55rem;'%></td>
+          <td><%= claim.troubled_at.strftime("%Y年%m月%d日").to_s %></td>
+          <td><%= claim.category %></td>
+          <td><%= claim.content %></td>
+          <td><%= claim.support_content %></td>
+        </tr>
+      <%end%>
+      </tbody>
+      </table>
+  <%end%>
+</div>
+       
+ 
+      
