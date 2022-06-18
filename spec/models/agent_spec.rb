@@ -14,14 +14,17 @@ RSpec.describe Agent, type: :model do
  
     context 'ZIPは7文字以内であれば登録できる' do
       it "zipが7文字以内であれば登録できること" do
-        zip = agent(zip: "1234567")
-        expect(zip).to be_valid
+        @agent = Agent.new(
+          zip: "1234567"
+        )
+        expect(agent).to be_valid
       end
     end
 
     it 'ZIPは8文字以上であれば登録できない' do
-      zip = agent(zip: "12345678") # 意図的に6文字のパスワードを設定してエラーが出るかをテスト 
-      zip.valid?
-      expect(zip.errors[:zip]).to include("7文字")
+      @agent = Agent.new(
+        zip: "12345678"
+      ) 
+      expect(@agent.valid?).to eq(false)
     end
 end
