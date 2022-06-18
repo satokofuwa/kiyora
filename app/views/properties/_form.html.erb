@@ -1,47 +1,49 @@
 <%= form_with(model: @property,local: true) do |form| %>
-  <% if @property.errors.any? %>
-    <div id="error_explanation">
-    <p class="error"><%= @property.errors.count %>件のエラーがあります。</p>
-    <ul>
-      <% @property.errors.full_messages.each do |msg| %>
-        <li class="error"><%= msg %></li>
-      <% end %>
-    </ul>
-    </div>
-  <% end %>
-  <%= @date %>
-    <div class="container">
-    <div class="p-3 mb-2 bg-light text-dark">
-    <div class="row ">
-    <div class="col">
-      <%= form.label "物件名" %>
-      <%= form.text_field :name, class: 'form-control form-control-sm', placeholder: "例　賃貸マンション" %>
-    </div>
-    <div class="col">
-      <%= form.label "電話" %>
-      <%= form.text_field :tel , class: 'form-control form-control-sm', placeholder: "000-000-0000"%>
-    </div>
-    </div>
-    </div>
+  <div class="test_box font_test">
+    <% if @property.errors.any? %>
+      <div id="error_explanation">
+      <p class="error"><%= @property.errors.count %>件のエラーがあります。</p>
+      <ul>
+        <% @property.errors.full_messages.each do |msg| %>
+          <li class="error"><%= msg %></li>
+        <% end %>
+      </ul>
+      </div>
+    <% end %>
+    <%= @date %>
+      <div class="container">
+      <div class="p-3 mb-2 bg-light text-dark">
+      <div class="row ">
+      <div class="col">
+        <%= form.label "物件名" %>
+        <%= form.text_field :name, class: 'form-control form-control-sm', placeholder: "例　賃貸マンション" %>
+      </div>
+      <div class="col">
+        <%= form.label "電話" %>
+        <%= form.text_field :tel , class: 'form-control form-control-sm', placeholder: "000-000-0000"%>
+      </div>
+      </div>
+      </div>
 
-  <div class="p-3 mb-2 bg-light text-dark">
-  <div class="row">
-  <div class="col-4">
-    <%= form.label "郵便番号" %>
-    <%= form.text_field :zip, class: 'form-control form-control-sm', placeholder: "0000000 7桁"%>
-  </div>
-  <div class="col-4">
-    <%= form.label "都道府県" %>
-    <%= form.text_field :prefecture, class: 'form-control form-control-sm', placeholder: "例　東京都" %>
-  </div>
-  <div class="col-6">
-    <%= form.label "市町村" %>
-    <%= form.text_field :city, class: 'form-control form-control-sm',placeholder: "例　世田谷区" %>
-  </div>
-  </div>
-  </div>
-  <div>
-    <td><%= form.submit "更新", class:'btn btn-outline-primary' %>
+    <div class="p-3 mb-2 bg-light text-dark">
+    <div class="row">
+    <div class="col-4">
+      <%= form.label "郵便番号" %>
+      <%= form.text_field :zip, class: 'form-control form-control-sm', placeholder: "0000000 7桁"%>
+    </div>
+    <div class="col-4">
+      <%= form.label "都道府県" %>
+      <%= form.text_field :prefecture, class: 'form-control form-control-sm', placeholder: "例　東京都" %>
+    </div>
+    <div class="col-6">
+      <%= form.label "市町村" %>
+      <%= form.text_field :city, class: 'form-control form-control-sm',placeholder: "例　世田谷区" %>
+    </div>
+    </div>
+    </div>
+    <div>
+      <td><%= form.submit "更新", class:'btn btn-outline-primary' %>
+    </div>
   </div>
 <% end %>
 </div>
