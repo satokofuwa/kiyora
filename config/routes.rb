@@ -30,6 +30,9 @@ Rails.application.routes.draw do
     member do
       resources :users
     end
+    member do
+      resources :customers
+    end
   end
   resources :properties do
     collection do

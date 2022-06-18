@@ -4,6 +4,7 @@ class TasksController < ApplicationController
   before_action :set_task,only: %i[update show edit destroy ]
   before_action :set_show, only: [:show]
   before_action :check_user, only: %i[edit]
+  #before_action :valid_prefecture?, only: %i[create update]
 
   def index
     @tasks = Task.all
@@ -28,8 +29,6 @@ class TasksController < ApplicationController
     @customer = @task.customers.build
     @user=@task.users.build
     @agent= Agent.new
-    #@task = @tasks.find_by(params[:id])
-    #@property = @task.properties.find_by(params[:id])
   end
   def create
     @task = Task.new(task_params)
@@ -45,10 +44,7 @@ class TasksController < ApplicationController
   def update
     @partner=Partner.all
     @property = @task.properties.find_by(id: params[:id])
-    # @partner =@task.partners.find_by(id: params[:id])
     @partners= @task.partners
-    #@task.front_managers
-    #@task.workers
     @worker = @task.workers
     if @task.update(task_params)
       redirect_to tasks_path, notice:  t('shared.update')
@@ -111,7 +107,7 @@ class TasksController < ApplicationController
     @partner=@task.partners
   end
   def set_show
-  params.permit(:name, :dispatch,
+    params.permit(:name, :dispatch,
     properties_attributes:[:name, :zip, :prefecture, :city , :address, :tel, :_destroy ],
     partners_attributes:[{id:[]}, :name, :worker, :contact, :sales, :_destroy],
     agents_attributes:[:id, :manager_name, :name, :zip, :prefecture, :city, :address, :_destroy]

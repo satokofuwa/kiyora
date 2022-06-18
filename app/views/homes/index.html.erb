@@ -8,20 +8,20 @@
         hsl(218, 41%, 30%) 35%,
         hsl(218, 41%, 20%) 75%,
         hsl(218, 41%, 19%) 80%,
-        transparent 100%),
+        transparent 70%),
       radial-gradient(1250px circle at 100% 100%,
         hsl(218, 41%, 45%) 15%,
         hsl(218, 41%, 30%) 35%,
         hsl(218, 41%, 20%) 75%,
         hsl(218, 41%, 19%) 80%,
-        transparent 100%);
+        transparent 70%);
     }
 
     #radius-shape-1 {
       height: 220px;
       width: 220px;
       top: -60px;
-      left: -130px;
+      left: -100px;
       background: radial-gradient(#44006b, #ad1fff);
       overflow: hidden;
     }
@@ -39,19 +39,24 @@
     .bg-glass {
       background-color: hsla(0, 0%, 100%, 0.9) !important;
       backdrop-filter: saturate(200%) blur(25px);
+        opacity: 0.3;
+
     }
+ 
+
   </style>
 
   <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
+
     <div class="row gx-lg-5 align-items-center mb-5">
       <div class="col-lg-7 mb-6 mb-lg-0" style="z-index: 10">
-        <h1 class="my-5 display-6 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
+        <h1 class="my-5 display-6 fw-bold ls-tight" style="color: navy">
           Kiyora <br />
         </h1>
         <h4>
          <span style="color: hsl(218, 81%, 75%)">About</span>
         </h4>
-        <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
+        <p class="mb-4 opacity-70">
             このアプリは建築設備業に特化した業務システムアプリです。<br>
             検索機能の充実、伝票作成から請求書発行まで<br>
             トータルに業務をサポート。<br>
