@@ -14,12 +14,15 @@ gem 'rails_admin', '~> 3.0'
 gem 'devise'
 gem 'gimei'
 gem 'seed-fu'
+gem 'jquery-rails'
 gem 'faker'
 gem 'cancancan'
 gem 'rexml'
 gem 'ransack'
 gem 'prawn'
 gem 'prawn-table'
+gem 'simple_calendar', '~>2.0'
+gem 'dotenv-rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -27,6 +30,8 @@ group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'spring'
+  gem 'rails-i18n'
+  gem 'devise-i18n'
 end
 
 group :development do
