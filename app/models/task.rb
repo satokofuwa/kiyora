@@ -52,6 +52,9 @@ class Task < ApplicationRecord
   def sum_of_sales
     sales * 0.1
   end
+  def check_user
+    redirect_to tasks_path, notice: '伝票作成者以外はアクセスできません' if @task.user_id != current_user.id
+  end
   # def valid_prefecture?
   # if @customer.prefectures=="埼玉県"
   #  @customer.prefectures.sub!(/埼玉県/, 'Saitama-ken')

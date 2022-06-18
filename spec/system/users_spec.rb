@@ -33,7 +33,7 @@ RSpec.describe "Users", type: :system do
           click_button 'ログイン'
           visit rails_admin_path
           expect(page).to have_content 'サイト管理'
-          first('.label-danger').click
+          click_on 'ホーム'
           expect(page).to have_content 'Kiyora'
         end
       end
