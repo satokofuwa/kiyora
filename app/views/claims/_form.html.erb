@@ -1,0 +1,68 @@
+<%= form_with(model: @claim,local: true) do |form| %>
+<div class="test_box font_test">
+  <% if @claim.errors.any? %>
+    <div id="error_explanation">
+    <p class="error"><%= @claim.errors.count %>件のエラーがあります。</p>
+    <ul>
+      <% @claim.errors.full_messages.each do |msg| %>
+        <li class="error"><%= msg %></li>
+      <% end %>
+    </ul>
+    </div>
+  <% end %>
+<%= @date %>
+<%= notice %>
+  <div class="container">
+    <div class="p-3 mb-2 bg-light text-dark">
+      <div class="row ">
+      <div class="col">
+        <%= form.label "伝票番号" %>
+        <%= form.collection_select :task_id, Claim.all, :task_id, :task_id, {prompt: "選択してください"}, {class: "form-control form-control-sm"} %>
+      </div>
+      <div class="col">
+        <%= form.label "クレーム発生日" %>
+        <%= form.datetime_field :troubled_at, class: 'form-control form-control-sm'  %>
+      </div>
+      </div><!--row-->
+
+      <div class="row ">
+      <div class="col">
+        <%= form.label "クレームカテゴリ" %>
+        <%= form.select :category, Claim.categories.keys.to_a, {prompt: "選択してください"},class: 'form-control form-control-sm' %>
+      </div>
+      </div>
+      <div class="row ">
+      <div class="col">
+        <%= form.label "発生内容" %>
+        <%= form.text_field :content , class: 'form-control form-control-sm',placeholder: "発生状況を記入"%>
+      </div>
+     <%if controller.action_name == "new" %>
+      <div class="col">
+        <%= form.label "作成日時" %>
+        <%= form.datetime_field :created_at , class: 'form-control form-control-sm'%>
+      </div>
+      <%else%>
+       <div class="col">
+        <%= form.label "更新日時" %>
+        <%= form.datetime_field :updated_at , class: 'form-control form-control-sm'%>
+      </div>
+      <%end%>
+      </div>
+      </div><!--row-->
+      <div class="row ">
+      <div class="col">
+        <%= form.label "対応内容" %>
+        <%= form.text_area :support_content , class: 'form-control form-control-sm',rows:"10",placeholder: "対応の詳細を記入"%>
+      </div>
+      </div>
+      <div class="row ">
+      <div class="col">
+        <td><%= form.submit "登録", class:'btn btn-outline-primary' %>
+      </div>
+      </div>
+    </div>
+  </div>
+ </div>
+<% end %>
+
+
