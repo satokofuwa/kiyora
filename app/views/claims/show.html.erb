@@ -1,0 +1,54 @@
+
+  <td><%= link_to t('helpers.link.claim_overview'), claims_path,class: 'btn btn-outline-primary'%></td>
+  <div class="test_box font_test"  >
+  <div class='container'>
+
+    <div class="p-3 mb-2 bg-light text-dark">
+    <div class =row>
+      <div class="col-2">発生日時 :</div>
+      <div class="col-2"><%= @claim.troubled_at.strftime("%Y年%m月%d日").to_s%></div>
+    </div>
+    </div>
+
+    <div class="p-3 mb-2 bg-light text-dark">
+     <div class =row>
+      <div class="col-2">クレームカテゴリ : </div>
+      <div class="col-1"> <%= @claim.category %></div>
+    </div>
+    <div class =row>
+      <div class="col-2"> 発生内容 : </div>
+      <div class="col-2"><%= @claim.content %></div>
+    </div>
+    <div class =row>
+      <div class="col-2"> 伝票番号 : </div>
+      <div class="col-2"><%= @claim.task_id %></div>
+    </div>
+    </div>
+   
+      <div class="p-3 mb-2 bg-light text-dark">
+        <div class =row>
+        <div class="col-2"> 作業名 : </div>
+        <div class="col-10"><%= @task.name %></div>
+        <div class="col-2"> 作業日 : </div>
+        <div class="col-10"><%= @task.support_at %></div>
+        </div>
+      </div>
+
+
+      <div class="p-3 mb-2 bg-light text-dark">
+        <div class =row>
+       
+          <div class="col-2"> 管理会社名: </div>
+          <div class="col-10"><%= @agent.name %></div>
+          <div class="col-2"> 担当者名: </div>
+          <div class="col-10"><%= @agent.manager_name %></div>
+
+        </div>
+      </div>
+    
+ 
+  </div><!--container-->
+  </div><!--font-->
+
+
+
