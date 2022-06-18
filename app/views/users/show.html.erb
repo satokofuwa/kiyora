@@ -1,0 +1,57 @@
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    <img src="/follow.png" width="30" height="30" class="d-inline-block align-top" alt="">
+     伝票連携
+  </a>
+</nav>
+<div class=container>
+<%= link_to '社員一覧', users_path,class: 'btn btn-outline-primary btn-sm' %>
+  <div class="p-3 mb-2 bg-light text-dark">
+    <div class="row">
+      <div class="col-3">
+        社員名：<%= @user.name %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-3">
+        社員番号：<%= @user.id %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        メールアドレス: <%= @user.email %>
+      </div>
+    </div>
+  </div>
+  <div class="p-3 mb-2 bg-light text-dark">  
+    フォロー中の社員: <br>
+<% @user.followers.each do |user| %>
+  <div class="row">
+    <div class="col-3">
+      社員名： <%= user.name %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-5">
+      メールアドレス:  <%= user.email %>
+    </div>
+  </div>
+<% end %>
+</div>
+<br>
+  <div class="p-3 mb-2 bg-light text-dark">
+      他社員からのフォロー: 
+<% @user.following.each do |user| %>
+  <div class="row">
+    <div class="col-3">
+      社員名： <%= user.name %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-5">
+      メールアドレス:  <%= user.email %>
+    </div>
+  </div>
+<% end %> 
+</div>
+
