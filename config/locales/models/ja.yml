@@ -130,7 +130,7 @@ ja:
         admin_check: 承認欄
         vehicle: 作業車両
         sales: 売上金
-        confirmation: 作業確認連絡欄
+        confirmation: 作業確認
         partner_manager: 管理会社担当者
     new:
         create_task: 新規伝票作成

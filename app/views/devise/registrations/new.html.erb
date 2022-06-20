@@ -1,29 +1,93 @@
-<h2>Sign up</h2>
+  
+<section class="background-radial-gradient overflow-hidden">
+  <style>
+    .background-radial-gradient {
+      background-color: hsl(218, 41%, 15%);
+      background-image: radial-gradient(650px circle at 0% 0%,
+        hsl(218, 41%, 35%) 15%,
+        hsl(218, 41%, 30%) 35%,
+        hsl(218, 41%, 20%) 75%,
+        hsl(218, 41%, 19%) 80%,
+        transparent 70%),
+      radial-gradient(1250px circle at 100% 100%,
+        hsl(218, 41%, 45%) 15%,
+        hsl(218, 41%, 30%) 35%,
+        hsl(218, 41%, 20%) 75%,
+        hsl(218, 41%, 19%) 80%,
+        transparent 70%);
+    }
+    .bg-glass {
+      background-color: hsla(0, 0%, 100%, 0.9) !important;
+      backdrop-filter: saturate(200%) blur(25px);
+        opacity: 0.8;
+    }
+    @font-face{
+      font-family: 'Magnolia Script';
+      src: font-url('/assets/Magnolia Script.otf');
+    }
+    .box {
+      background-image: url('/large.jpeg');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 100% auto;
+      height: 100%;
+      min-height: 100%;
+      text-align: left;
+    }
+    .col-lg-7 {
+      box-shadow: inset 0 0 5px 5px #FFF;
+      background-color: rgba(255, 255, 255,0.5);
+    }
+    .display-6{
+      font-size: 25px;
+      font-family: 'Magnolia Script'; 
+    }
+    .my-style{
+      font-family: 'Magnolia Script'; 
+      font-size: 45px;
+      color:navy;
+    }
+  </style>
+  <div class="box px-4 py-5 px-md-5 text-center text-lg-start my-5">
+    <div class="row gx-lg-5 align-items-center mb-5">
+      <div class="col-lg-7 mb-6 mb-lg-0" style="z-index: 10">
+        <h2 class = my-style>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
+  <div class="col-sm">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email",class: 'form-control form-control-sm'%>
   </div>
 
-  <div class="field">
+  <div class="col-sm">
     <%= f.label :password %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <em>(<%= @minimum_password_length %> 文字以上)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.password_field :password, autocomplete: "new-password", class: 'form-control form-control-sm' %>
   </div>
 
-  <div class="field">
+  <div class="col-sm">
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control form-control-sm'%>
   </div>
-
+   <div class="row">
+ <div class="row-cols-auto">
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "登録", class: 'btn btn-outline-primary btn-sm' %>
   </div>
 <% end %>
+ </div>
+<div class="row-cols-auto">
+<%= link_to "ログイン",user_session_path, class: 'btn btn-outline-primary btn-sm' %>
+ </div>
+  </div>
+      </div>
+    </div>
+  
+  </body>
+</section>
 
-<%= render "devise/shared/links" %>
+

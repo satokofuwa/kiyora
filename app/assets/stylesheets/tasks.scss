@@ -17,7 +17,7 @@ font-size:  20px;
 .container-fluid {
   margin-right: auto;
   margin-left: auto;
-  max-width: 900px; //例えば
+  max-width: 1200px; //例えば
   }
 
 /* table02 */
@@ -32,7 +32,7 @@ font-size:  20px;
 /* tab */
 @media only screen and (max-width: 768px) {
   #table03 {
-    display: block;
+ 
     overflow-x: scroll;
     white-space: nowrap;
   }

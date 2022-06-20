@@ -12,7 +12,7 @@
 $(function () {
 
   // 緯度経度を取得
-  const latlon_url = 'https://api.openweathermap.org/geo/1.0/direct?q=<%= @customer.prefecture %>&appid=<%= ENV['OPEN_WEATHER_MAP_API']%>';
+  const latlon_url = 'https://api.openweathermap.org/geo/1.0/direct?q=<%= "#{@prefecture}" %>&appid=<%= ENV['OPEN_WEATHER_MAP_API']%>';
   console.log(latlon_url);
   $.ajax({
     url: latlon_url,
