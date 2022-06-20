@@ -5,7 +5,6 @@
     <title>Kiyora</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-  
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -17,9 +16,9 @@
     <nav class="navbar navbar-light mb-2" style="background-color:#3d729c;">
     <div class="container-fluid">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand ml-auto" href="#"><img src="/water-ripples-175463.jpeg" width="30" height="30" class="d-inline-block align-top" alt=""><%= link_to "Kiyora", tasks_path %></a>
+    <a class="navbar-brand ml-auto" href="#"><img src="/leaf.png" width="30" height="30" class="d-inline-block align-top" alt=""><%= link_to "Kiyora", tasks_path %></a>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
     <% if user_signed_in? %>
@@ -36,9 +35,9 @@
           <a class="nav-link" href="#"><%= link_to t('.claims'), claims_path, class:link_to %></a>
       </li>
       <% if current_user.admin? %>
-      <li class="nav-item">
-          <a class="nav-link" href="#"><%= link_to t('.admin'), rails_admin_path, class:link_to %></a>
-      </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#"><%= link_to t('.admin'), rails_admin_path, class:link_to %></a>
+        </li>
       <% end %>
       <li class="nav-item">
         <a class="nav-link" href="#"><%= link_to t('.logout'), "/users/sign_out", method: :delete %></a>
@@ -78,8 +77,9 @@
       </p>
     </div>
     </footer>
-    </div>
+   
  </body>
+  </div>
  </head>
 </html>
    
