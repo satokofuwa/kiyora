@@ -4,8 +4,15 @@ class CustomersController < ApplicationController
  
   def show
     @tasks=Task.all
+    @prefectures = Prefecture.all
     @task=@tasks.find(@customer.task_id)
-   
+
+    @prefectures.each do |prefecture|
+      if @customer.prefecture== prefecture.kanji
+        @prefecture= prefecture.romaji
+      end
+    end
+
   end
   private
   def customer_params 
