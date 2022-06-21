@@ -37,15 +37,20 @@
         <%= form.text_field :content , class: 'form-control form-control-sm',placeholder: "発生状況を記入"%>
       </div>
      <%if controller.action_name == "new" %>
-      <div class="col">
-        <%= form.label "作成日時" %>
-        <%= form.datetime_field :created_at , class: 'form-control form-control-sm'%>
-      </div>
+        <div class="col-4"> 
+          <%= form.label "作成日時" %>
+          <%= form.hidden_field :created_at,value: DateTime.current %>
+          <br>
+          <%= Date.current.strftime("%Y年%m月%d日").to_s %>
+        </div>
+    
       <%else%>
-       <div class="col">
-        <%= form.label "更新日時" %>
-        <%= form.datetime_field :updated_at , class: 'form-control form-control-sm'%>
-      </div>
+        <div class="col-4">  
+          <%= form.label "更新日時" %>
+          <%= form.hidden_field :updated_at,value: DateTime.current %>
+          <br>
+          <%= Date.current.strftime("%Y年%m月%d日").to_s %>
+        </div>
       <%end%>
       </div>
       </div><!--row-->
