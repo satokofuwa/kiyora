@@ -210,3 +210,7 @@ end
       remember_created_at:    '2022/01/01' 
     )
   end
+  require "csv"
+  CSV.foreach('db/ブック-2.csv') do |row|
+    Prefecture.create(id: row[0], area: row[1], kanji: row[2], romaji: row[3])
+  end
