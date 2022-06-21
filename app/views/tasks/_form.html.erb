@@ -1,7 +1,7 @@
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous">
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </script>
-  <body>
+ 
   <%= form_with(model: @task, local: true) do |form| %>
     <div class="container">
       <% if @task.errors.any? %>
