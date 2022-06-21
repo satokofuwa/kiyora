@@ -16,7 +16,6 @@ RSpec.describe "Claims", type: :system do
         fill_in 'claim_troubled_at',with: claim.troubled_at
         select claim.category, from:'claim_category'
         fill_in 'claim_content',with: claim.content
-        fill_in 'claim_updated_at',with: claim.created_at
         fill_in 'claim_support_content',with: claim.support_content
         click_on '登録'
       end
@@ -49,7 +48,6 @@ RSpec.describe "Claims", type: :system do
         fill_in 'claim_troubled_at',with: claim.troubled_at
         select claim.category, from:'claim_category'
         fill_in 'claim_content',with: claim.content
-        fill_in 'claim_created_at',with: claim.created_at
         fill_in 'claim_support_content',with: claim.support_content
         click_on '登録'
       end
@@ -89,7 +87,6 @@ RSpec.describe "Claims", type: :system do
         sign_in user
         visit new_claim_path
         select claim.id, from:'claim[task_id]'
-        fill_in 'claim[created_at]', with: claim.created_at
         click_on '登録'
         expect(page).to have_content 'エラーがあります'
       end
