@@ -37,10 +37,10 @@
   <tbody>
     <% @properties.each do |property| %>
       <tr> 
-        <td><%= link_to t('helpers.submit.links.property_update')+"#{property.id}", edit_property_path(property.id), class: "btn btn-outline-primary" %></td>
-        <td><%= link_to t('helpers.submit.links.do_show'), property_path(property.id), class:'btn btn-outline-success' %>
+        <td><%= link_to t('helpers.submit.links.property_update')+"#{property.id}", edit_property_path(property.id), class: "btn btn-outline-primary btn-sm" %></td>
+        <td><%= link_to t('helpers.submit.links.do_show'), property_path(property.id), class:'btn btn-outline-success btn-sm' %>
         <% if current_user.admin? %>
-          <td><%= link_to t('helpers.submit.links.delete'), property_path(property.id), method: :delete, class: 'btn btn-outline-danger', data: { confirm: '削除してよろしいですか？'} %></td>
+          <td><%= link_to t('helpers.submit.links.delete'), property_path(property.id), method: :delete, class: 'btn btn-outline-danger btn-sm', data: { confirm: '削除してよろしいですか？'} %></td>
         <%end%>
         <td><%= property.name %></td>
         <td><%= property.zip %></td>
@@ -52,7 +52,6 @@
     <% end %>
   </tbody>
   </table>
-
 <% end %>
  </div>
 

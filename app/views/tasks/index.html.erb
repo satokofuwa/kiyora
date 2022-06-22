@@ -1,5 +1,3 @@
-
-
 <nav class="navbar navbar-light bg-light">
   <a class="navbar-brand" href="#">
     <img src="document.png" width="30" height="30" class="d-inline-block align-top" alt="">
@@ -11,7 +9,6 @@
 <div class="test_box font_test"  >
   <div class="form-group">
     <%= form_with model: @task, url:tasks_path, scope: :task, method: :get, local: true do |form| %>
-
       <div class="row">
         <%= search_form_for( @q, url: tasks_path) do |f| %>
           <div class="row-cols-auto">
@@ -87,7 +84,7 @@
         <%end%>
         <td nowrap><%= link_to t('helpers.submit.links.do_show'), task_path(task.id),class: "btn btn-outline-success btn-sm", style: '--bs-btn-font-size: .55rem;'%></td>
             <% @customer = Customer.find_by(task_id: task.id) %>
-       <td nowrap><%= link_to t('helpers.link.do_show_customer'), customer_path(@customer.id),class: "btn btn-outline-success btn-sm", style: '--bs-btn-font-size: .55rem;'%></td>
+        <td nowrap><%= link_to t('helpers.link.do_show_customer'), customer_path(@customer.id),class: "btn btn-outline-success btn-sm", style: '--bs-btn-font-size: .55rem;'%></td>
         <td nowrap> <%= link_to "請求書",record_pdf_path(task.id, format: "pdf"), class: 'btn btn-outline-primary, btn-sm' %></td>
         <td><%= task.id %></td>
         <td nowrap><%= task.name %></td>

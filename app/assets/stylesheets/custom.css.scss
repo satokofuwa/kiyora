@@ -7,7 +7,7 @@ html {
 body {
   padding-top: 10px;
   position: relative;
-  background-color:rgb(220, 233, 235)
+  background-color:rgb(220, 233, 235);
 }
 
 section {
@@ -71,6 +71,8 @@ small {
   .test_box {
   font-size:  12px;       /* 文字サイズ指定 */
   margin:  20px;          /* 空白指定 */
+  background-color: white;
+  padding-bottom:10px;
 }
 .font_test {
   font-family:  serif;    /* フォントの種類指定 */
@@ -81,3 +83,10 @@ small {
 .navbar-brand{
 float: left; 
 }
+.nav-item{
+  font-family:  serif;
+}
+a{
+  font-family:  serif;
+}
+
