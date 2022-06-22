@@ -11,7 +11,7 @@ class TasksController < ApplicationController
     @q= Task.ransack(params[:q])
     @tasks = @q.result(distinct: true).order(created_at: :desc)
     @customer =Customer.all
-    
+    @tasks = Task.page(params[:page]).per(10)
   end
   def new
     @date = Date.current.strftime('%Y/%m/%d')
