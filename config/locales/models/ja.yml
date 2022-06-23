@@ -16,6 +16,7 @@ ja:
       relationship: 伝票連携
       invoice: 請求書
       front_manager: 管理人
+      prefecture: 都道府県
     attributes:
       task:
         new: 新規伝票登録

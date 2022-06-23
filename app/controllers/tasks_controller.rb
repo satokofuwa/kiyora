@@ -9,9 +9,9 @@ class TasksController < ApplicationController
     @tasks = Task.all
     @users= User.all
     @q= Task.ransack(params[:q])
-    @tasks = @q.result(distinct: true).order(created_at: :desc)
+    @tasks = @q.result(distinct: true).order(created_at: :desc).page(params[:page]).per(10)
     @customer =Customer.all
-    @tasks = Task.page(params[:page]).per(10)
+    
   end
 
   def new
@@ -104,7 +104,7 @@ class TasksController < ApplicationController
   end
   def set_task
     @task = Task.find(params[:id])
-    @partner=@task.partners
+    
   end
   def set_show
     params.permit(:name, :dispatch,

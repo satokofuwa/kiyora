@@ -6,9 +6,9 @@ class PropertiesController < ApplicationController
 
   def index
     @properties = Property.all
+ 
     @q= Property.ransack(params[:q])
-    @properties = @q.result(distinct: true).order(created_at: :desc)
-    @properties = Property.page(params[:page]).per(10)
+    @properties = @q.result(distinct: true).order(task_id: :desc).page(params[:page]).per(5)
   end
 
   def new
@@ -26,7 +26,6 @@ class PropertiesController < ApplicationController
   end
 
   def update
-  
     if @property.update(property_params)
       redirect_to properties_path, notice:  t('shared.update')
     else 

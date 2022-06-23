@@ -19,7 +19,7 @@
              <%= f.submit '伝票No検索', class: 'btn btn-outline-primary btn-sm'%>
           </div>
 
-    <%= search_form_for( @q, url: tasks_path) do |f| %>
+  <%= search_form_for( @q, url: tasks_path) do |f| %>
   <div class="row-cols-auto">
     <%= f.search_field :properties_name_cont ,class: 'form-control form-control-sm', placeholder: "例　賃貸マンション" %>
   </div>
@@ -86,7 +86,7 @@
         <td nowrap><%= link_to t('helpers.submit.links.do_show'), task_path(task.id),class: "btn btn-outline-success btn-sm", style: '--bs-btn-font-size: .55rem;'%></td>
             <% @customer = Customer.find_by(task_id: task.id) %>
         <td nowrap><%= link_to t('helpers.link.do_show_customer'), customer_path(@customer.id),class: "btn btn-outline-success btn-sm", style: '--bs-btn-font-size: .55rem;'%></td>
-        <td nowrap> <%= link_to "請求書",record_pdf_path(task.id, format: "pdf"), class: 'btn btn-outline-primary, btn-sm' %></td>
+        <td nowrap > <%= link_to "請求書",record_pdf_path(task.id, format: "pdf") %></td>
         <td><%= task.id %></td>
         <td nowrap><%= task.name %></td>
         <td><%= task.dispatch %></td>
