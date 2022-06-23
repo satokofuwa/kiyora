@@ -169,10 +169,11 @@ ja:
         property_update: 物件更新
         do_edit: 編集
         do_edit_property: 物件情報編集
+        do_edit_agent: 管理会社情報編集
         delete: 削除
         do_show: 詳細
         do_create: 新規作成
-        do_create_claim: クレーム情報新規作成
+        do_create_claim: クレーム情報作成
     link:
       do_edit: 伝票編集
       do_create: 伝票作成

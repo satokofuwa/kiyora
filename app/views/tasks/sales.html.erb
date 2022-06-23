@@ -45,7 +45,7 @@
 <% end %>
 <br>
 <table class="table table-sm">
-  <thead class="thead-light">
+  <thead class="table-info">
     <tr>
       <th scope="col"><%= t('伝票No') %></th>
       <th scope="col"><%= t('作業日') %></th>
@@ -60,7 +60,7 @@
     <%sales =0%>
     <%@events.each do |event| %>
         <td><%= event.id %></td>
-        <td><%= event.support_at %></td>
+        <td><%= event.support_at.strftime("%m月%d日").to_s  %></td>
         <td><%= event.name %></td>
         <td><%= event.dispatch %></td>
         <td><%= event.sales %></td>
@@ -71,14 +71,17 @@
       <%sales += event.sales %>
     <% end %>
     <br>
-    <div class ="sale">  
-      <div class="col-7"> 
-      当月売上金額合計:   <%= sales %>  
-      当月売上金額合計:   <%= (sales + sales * 0.1).round %>
+    <div class = "sale">  
+      <div class="row">
+        <div class= "col-3"> 
+          <h6><i class= "fa-solid fa-coins">当月売上金額合計:</i><i class="fa-solid fa-yen-sign"><%= sales %></i></h6>
+        </div>
+        <div class= "col-3"> 
+          <h6><i class= "fa-solid fa-coins"> 税込合計:</i><i class="fa-solid fa-yen-sign"><%= (sales + sales * 0.1).round %></i></h6>
+        </div>
       </div>
     </div>
   </tbody>
 </table>
-
 </div><!--test_box font_test-->
 

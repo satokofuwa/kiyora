@@ -34,7 +34,7 @@
 <% end %>
   </div>
 <table class="table table-sm">
-  <thead class="thead-light">
+  <thead class="table-info">
     <tr>
       <th scope="col"><%= t('作業名') %></th>
       <th scope="col"><%= t('出動区分') %></th>
@@ -48,7 +48,7 @@
     <%@events.each do |event| %>
         <td><%= event.name %></td>
         <td><%= event.dispatch %></td>
-        <td><%= event.support_at %></td>
+        <td><%= event.support_at.strftime("%m月%d日").to_s %></td>
         <td><%= event.start_time.strftime("%Y年%m月%d日 %H時%M分").to_s %></td>
         <td><%= event.end_time.strftime("%Y年%m月%d日 %H時%M分").to_s %></td>
         <td><%= event.category %></td>

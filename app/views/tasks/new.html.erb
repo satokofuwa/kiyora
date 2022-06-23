@@ -1,12 +1,10 @@
 <%= form_with(model: @task, local: true) do |form| %>
-  伝票登録画面
   <div class="container">
-  <div class="p-3 mb-2 bg-light text-dark">
-
-  
-    <% if @task.errors.any? %>
-      <div id="error_explanation">
-      <p class="error"><%= @task.errors.count %>件のエラーがあります。</p>
+    <h6><%= t('helpers.link.do_create') %></h6>
+    <div class="p-3 mb-2 bg-light text-dark">
+      <% if @task.errors.any? %>
+        <div id="error_explanation">
+        <p class="error"><%= @task.errors.count %>件のエラーがあります。</p>
       <ul>
         <% @task.errors.full_messages.each do |msg| %>
           <li class="error"><%= msg %></li>
