@@ -8,6 +8,7 @@ class PropertiesController < ApplicationController
     @properties = Property.all
     @q= Property.ransack(params[:q])
     @properties = @q.result(distinct: true).order(created_at: :desc)
+    @properties = Property.page(params[:page]).per(10)
   end
 
   def new

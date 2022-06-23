@@ -4,10 +4,10 @@ class AgentsController < ApplicationController
   before_action :set_agent, only: [:destroy,:edit,:update,:show]
 
   def index
-    
     @agents = Agent.all
     @q= Agent.ransack(params[:q])
     @agents = @q.result(distinct: true).order(created_at: :desc)
+    @agents = Agent.page(params[:page]).per(10)
   end
 
   def new
@@ -48,10 +48,8 @@ class AgentsController < ApplicationController
     @q = Agent.ransack(params[:q])
     @results = @q.result.includes(:tasks)
   end
-  
 
   def agent_params 
-  
     params.require(:agent).permit(:id,:task_id,:name,:zip,:prefecture,:city,:address,:tel,:manager_name,:created_at,:updated_at)
   end
 

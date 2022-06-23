@@ -4,7 +4,7 @@ class CreateTasks < ActiveRecord::Migration[6.0]
       t.string	:name
       t.integer :dispatch
       t.text	:content
-      t.date	:support_at
+      t.datetime	:support_at
       t.datetime	:start_time
       t.datetime	:end_time
       t.integer	:category

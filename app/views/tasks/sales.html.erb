@@ -1,14 +1,12 @@
-<div class="test_box font_test">
+
 <nav class="navbar navbar-light bg-light justify-content-start">
   <a class="navbar-brand" href="#"></a>
     <img src = "/calender.png" width="30" height="30" class="d-inline-block align-left" alt="">
      <%= "売上検索" %>
 </nav>
 
-<div class="container">
-    <div class="row">
-
 <%= search_form_for @q , url:tasks_sales_path, scope: :task, method: :get, local: true do |f| %> 
+<div class="test_box font_test">
 <div class="container">
   <div class="row">
     <div class="col">伝票番号検索
@@ -37,24 +35,17 @@
           discard_day: true, #日付には1が入る
           use_month_numbers: true,
           date_separator: '%s'),
-          '年 ') + '月' %>
+          '年 ') + '月'%>
+          <%= f.submit '売上検索', class: 'btn btn-outline-primary btn-sm' %>
+          <%= link_to 'クリア', url_for, class: 'btn btn-outline-primary btn-sm' %>
       </div> 
     </div>  
-   
-     <div class ="row">
-    <div class="col">    
-      <%= f.submit '売上検索', class: 'btn btn-outline-primary btn-sm' %>
-    </div>
-     <div class="col">   
-       <%= link_to 'クリア', url_for, class: 'btn btn-outline-primary btn-sm' %>
-    </div>
-    </div>
   </div>
    </div>
 <% end %>
 <br>
 <table class="table table-sm">
-  <thead class="thead-light">
+  <thead class="table-info">
     <tr>
       <th scope="col"><%= t('伝票No') %></th>
       <th scope="col"><%= t('作業日') %></th>
@@ -69,22 +60,28 @@
     <%sales =0%>
     <%@events.each do |event| %>
         <td><%= event.id %></td>
-        <td><%= event.support_at %></td>
+        <td><%= event.support_at.strftime("%m月%d日").to_s  %></td>
         <td><%= event.name %></td>
         <td><%= event.dispatch %></td>
         <td><%= event.sales %></td>
-        <% salse_tax = event.sales+event.sales*0.1%>
+        <% salse_tax = (event.sales+event.sales*0.1).round%>
         <td><%= salse_tax %></td>
         <td><%= event.content %></td>
       </tr>
       <%sales += event.sales %>
     <% end %>
     <br>
-      当月売上金額合計:   <%= sales %></div>   
-      当月税込売上金額合計:   <%= sales + sales * 0.1 %>
+    <div class = "sale">  
+      <div class="row">
+        <div class= "col-3"> 
+          <h6><i class= "fa-solid fa-coins">当月売上金額合計:</i><i class="fa-solid fa-yen-sign"><%= sales %></i></h6>
+        </div>
+        <div class= "col-3"> 
+          <h6><i class= "fa-solid fa-coins"> 税込合計:</i><i class="fa-solid fa-yen-sign"><%= (sales + sales * 0.1).round %></i></h6>
+        </div>
+      </div>
+    </div>
   </tbody>
 </table>
-</div>
-</div>
 </div><!--test_box font_test-->
 

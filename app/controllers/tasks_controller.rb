@@ -4,7 +4,6 @@ class TasksController < ApplicationController
   before_action :set_task,only: %i[update show edit destroy ]
   before_action :set_show, only: [:show]
   before_action :check_user, only: %i[edit]
-  #before_action :valid_prefecture?, only: %i[create update]
 
   def index
     @tasks = Task.all
@@ -12,8 +11,9 @@ class TasksController < ApplicationController
     @q= Task.ransack(params[:q])
     @tasks = @q.result(distinct: true).order(created_at: :desc)
     @customer =Customer.all
-    
+    @tasks = Task.page(params[:page]).per(10)
   end
+
   def new
     @date = Date.current.strftime('%Y/%m/%d')
     @tasks = @q.result(distinct: true).order(created_at: :desc)
@@ -38,7 +38,6 @@ class TasksController < ApplicationController
       else
         render :new, notice:  t('shared.failure_new') 
       end
-  
   end
   
   def update
@@ -46,10 +45,11 @@ class TasksController < ApplicationController
     @property = @task.properties.find_by(id: params[:id])
     @partners= @task.partners
     @worker = @task.workers
+    @task.valid?
     if @task.update(task_params)
       redirect_to tasks_path, notice:  t('shared.update')
     else 
-      render :edit 
+      render :edit , notice:  t('shared.failure_new') 
     end
   end
   def edit
@@ -65,7 +65,7 @@ class TasksController < ApplicationController
   def search
     @tasks = Task.all
     @q = Task.ransack(params[:q])
-    @events = @q.result(distinct: true).order(support_at: :desc)
+    @events = @q.result(distinct: true).order(support_at: :asc)
   
   end
   def week_calender

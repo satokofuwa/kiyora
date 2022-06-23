@@ -2,16 +2,19 @@
 
 html {
   overflow-y: scroll;
+
 }
 
 body {
+
   padding-top: 10px;
   position: relative;
-  background-color:rgb(220, 233, 235)
+  background-color:rgb(220, 233, 235);
 }
 
 section {
   overflow: auto;
+
 }
 
 textarea {
@@ -27,7 +30,7 @@ small {
     float: left; 
   }
 .wrapper{
-  min-height: 150vh;
+  min-height: 80vh;
   position: relative;/*←相対位置*/
   padding-bottom: 110px;/*←footerの高さ*/
   box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
@@ -69,8 +72,14 @@ small {
   font-family:  serif; 
   }
   .test_box {
+
   font-size:  12px;       /* 文字サイズ指定 */
   margin:  20px;          /* 空白指定 */
+  background-color: white;
+
+
+ 
+  
 }
 .font_test {
   font-family:  serif;    /* フォントの種類指定 */
@@ -80,4 +89,16 @@ small {
 }
 .navbar-brand{
 float: left; 
+font-size:  20px; 
 }
+.nav-item{
+  font-family:  serif;
+}
+a{
+  font-family:  serif;
+  position:center;
+}
+.pagination {
+  justify-content: center;
+}
+

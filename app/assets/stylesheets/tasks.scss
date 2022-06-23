@@ -14,11 +14,6 @@ white-space: nowrap
 .navbar-light{
 font-size:  20px; 
 }
-.container-fluid {
-  margin-right: auto;
-  margin-left: auto;
-  max-width: 1200px; //例えば
-  }
 
 /* table02 */
 #table02 th, #table02 td {
@@ -28,12 +23,13 @@ font-size:  20px;
   padding: 10px;
   height: 60px;
 }
-
 /* tab */
 @media only screen and (max-width: 768px) {
   #table03 {
- 
     overflow-x: scroll;
     white-space: nowrap;
   }
+}
+.sale {
+  font-weight: bold;
 }

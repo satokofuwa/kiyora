@@ -374,6 +374,7 @@ DEPENDENCIES
   gimei
   jbuilder (~> 2.7)
   jquery-rails
+  kaminari
   launchy
   listen (~> 3.2)
   pg (>= 0.18, < 2.0)

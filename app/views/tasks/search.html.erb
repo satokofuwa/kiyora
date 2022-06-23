@@ -10,7 +10,7 @@
   <div class="container">
     <div class="row">
       <div class="col-2">
-        <%= f.date_field :support_at_eq, include_blank: true,class: 'form-control form-control-sm'%>
+        <%= f.date_field :support_at_gteq, include_blank: true,class: 'form-control form-control-sm'%>
       </div>
     <div class="row">  
       <div class="col">        
@@ -19,15 +19,15 @@
       </div>
     </div>
     <div class="col">
-      <%= f.date_field :start_time_gteq,include_blank: true,class: 'form-control form-control-sm'%>
+      <%= f.datetime_field :start_time_gteq,include_blank: true,class: 'form-control form-control-sm'%>
     </div>
     <span>~</span>
     <div class="col">
-      <%= f.date_field :end_time_lteq_end_of_day, include_blank: true,class: 'form-control form-control-sm'%>
+      <%= f.datetime_field :end_time_lteq_end_of_day, include_blank: true,class: 'form-control form-control-sm'%>
     </div>  
     <div class="row">  
       <div class="col">        
-        <%= f.submit '作業開始.終了検索', class: 'btn btn-outline-primary btn-sm' %>
+        <%= f.submit '作業検索', class: 'btn btn-outline-primary btn-sm' %>
         <%= link_to 'クリア', url_for, class: 'btn btn-outline-primary btn-sm' %>
       </div>
     </div>
@@ -52,10 +52,21 @@
   <tbody>
     <%@events.each do |event| %>
         <td><%= event.name %></td>
-        <td><%= event.dispatch %></td>
-        <td><%= event.support_at %></td>
-        <td><%= event.start_time.strftime("%m月-%d日 %H時:%M分")%></td>
-        <td><%= event.end_time.strftime("%m月-%d日 %H時:%M分") %></td>
+      <% if event.dispatch =="平日"%>
+        <td><i class="fa fa-circle notification-circle" style="color: blue;"><%= event.dispatch %></i></td>
+      <% elsif event.dispatch == "夜間"%> 
+        <td><i class="fa fa-circle notification-circle" style="color: orange;"><%= event.dispatch %></i></td>
+      <% elsif event.dispatch =="緊急"%> 
+       <td> <i class="fa-light fa fa-star" style="color: red;"><%= event.dispatch %></i></td>
+       <% elsif event.dispatch =="夜間緊急"%> 
+        <td><i class="fa-solid fa fa-star" style="color: red;"><%= event.dispatch %></i></td>
+      <% else%> 
+        <td><i class="fa fa-circle notification-circle" style="color: green;"><%= event.dispatch %></i></td>
+      <% end %>    
+ 
+        <td><%= event.support_at.strftime("%Y/%m/%d")%></td>
+        <td><%= event.start_time.strftime("%H時:%M分") %></td>
+        <td><%= event.end_time.strftime("%H時:%M分") %></td>
         <td><%= event.category %></td>
       </tr>
     <% end %>
@@ -63,23 +74,25 @@
 </table>
 
 <div class= 'calender'>
-  <%= month_calendar events: @events do |date, event| %>
-    <%= date %>
-    <% event.each do |event| %>
+  <%= month_calendar(attribute: :support_at) do |date|  %>
+   <%= date %>
+    <% @events.each do |event| %>
     <br>
-    <% if user_signed_in? %>
-      <% if event.category ==0%>
+    <% if  user_signed_in? && ((event.support_at).month == date.month) && ((event.support_at).day == date.day)%>
+      <% if event.dispatch =="平日"%>
         <i class="fa fa-circle notification-circle" style="color: blue;"></i>
-      <% elsif event.category ==1%> 
+      <% elsif event.dispatch == "夜間"%> 
         <i class="fa fa-circle notification-circle" style="color: orange;"></i>
-      <% elsif event.category ==2%> 
-        <i class="fa fa-circle notification-circle" style="color: red;"></i>
+      <% elsif event.dispatch =="緊急"%> 
+        <i class="fa-light fa fa-star" style="color: red;"></i>
+       <% elsif event.dispatch =="夜間緊急"%> 
+        <i class="fa-solid fa fa-star" style="color: red;"></i>
       <% else%> 
         <i class="fa fa-circle notification-circle" style="color: green;"></i>
       <% end %>    
           <%= event.start_time.strftime('%H:%M') %>
-          <%= event.vehicle %>
-          <%= link_to event.content,task_path(event) %>
+          <%= event.vehicle+"号車"%>
+          <%= link_to event.name,task_path(event) %>
     <% end %>
   <% end %>
        </div>

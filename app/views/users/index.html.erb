@@ -1,12 +1,12 @@
 <nav class="navbar bg-light">
   <a class="navbar-brand" href="#">
     <img src="/follow.png" width="30" height="30" class="d-inline-block align-top" alt="">
-    伝票フォロー
+    伝票連携
   </a>
 </nav>
   <%= notice %>
   <table class="table table-sm">
-   <thead>
+    <thead class="table-info">
      
       <tr>
       <div class="row">
@@ -37,7 +37,6 @@
     </div>
     </div>
      </div>
-   
      <%= render 'follow_form', user: user %>
   <% end %>
  
