@@ -1,33 +1,13 @@
-10.times do |n|
-  name  = Gimei.kanji
-  email = Faker::Internet.email
-  tel = Faker::Number.number(digits: 11)
-  password = '000000'
-  prefecture = Gimei.prefecture.kanji 
-  city= Gimei.city.kanji 
-  address= Gimei.town.kanji
-  start_time = Faker::Time.forward(days: 23, period: :morning)
-  end_time = Faker::Time.forward(days: 23, period: :evening)
-  dispatch = Faker::Commerce.price(range: 0..10.0, as_string: true)
-  Task.create!(
-    id: "#{1000+n}",
-    name: '定期建築設備点検',
-    dispatch: 1,
-    content: '3年に1回',
-    support_at: '2022/5/16',
-    start_time: start_time,
-    end_time: end_time,
-    category: rand(0..12),
-    step: rand(0..7),
-    sales_check: rand(0..1),
-    admin_check: rand(0..1),
-    vehicle: "#{n+1}"'号車',
-    sales: '19800',
-    confirmation: rand(0..1),
-    user_id: "#{n+1}",
-    created_at:  '2022-01-01 00:00:00',
-    updated_at:  '2022-01-01 00:00:00'
+require "csv"
+CSV.foreach('db/伝票情報.csv') do |row|
+  Task.create(id: row[0], name: row[1], dispatch: row[2], content: row[3], support_at: row[4],
+    start_time: row[5], end_time: row[6], category: row[7], step: row[8], sales_check: row[9],
+    admin_check: row[10], vehicle: row[11], sales: row[12], confirmation: row[13], user_id: row[14],
+    created_at:row[15], updated_at:row[16]
   )
+end
+CSV.foreach('db/ブック-2.csv') do |row|
+  Prefecture.create(id: row[0], area: row[1], kanji: row[2], romaji: row[3])
 end
 
 10.times do |n|
@@ -91,7 +71,7 @@ end
     updated_at:   '2022-01-01 00:00:00',
   )
 end
-10.times do |n|
+18.times do |n|
   name  = Gimei.kanji
   email = Faker::Internet.email
   tel = Faker::Number.number(digits: 11)
@@ -103,7 +83,7 @@ end
     task_id:     "#{1000+n}",
     name:        name,
     prefecture:  prefecture,
-    zip:         1111111,
+    zip:         1160002,
     address:     address,
     tel:         tel,
     room_number: '201', 
@@ -111,6 +91,7 @@ end
     updated_at:  '2022-01-01 00:00:00'
   )
 end
+
 5.times do |n| #管理者作成
   name  = Gimei.kanji
   email = Faker::Internet.email
@@ -209,8 +190,4 @@ end
       admin:                  false,
       remember_created_at:    '2022/01/01' 
     )
-  end
-  require "csv"
-  CSV.foreach('db/ブック-2.csv') do |row|
-    Prefecture.create(id: row[0], area: row[1], kanji: row[2], romaji: row[3])
   end

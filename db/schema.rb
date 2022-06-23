@@ -135,7 +135,7 @@ ActiveRecord::Schema.define(version: 2022_06_20_063558) do
     t.string "name"
     t.integer "dispatch"
     t.text "content"
-    t.date "support_at"
+    t.datetime "support_at"
     t.datetime "start_time"
     t.datetime "end_time"
     t.integer "category"

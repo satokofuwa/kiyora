@@ -13,6 +13,7 @@ class TasksController < ApplicationController
     @customer =Customer.all
     @tasks = Task.page(params[:page]).per(10)
   end
+
   def new
     @date = Date.current.strftime('%Y/%m/%d')
     @tasks = @q.result(distinct: true).order(created_at: :desc)
@@ -64,7 +65,7 @@ class TasksController < ApplicationController
   def search
     @tasks = Task.all
     @q = Task.ransack(params[:q])
-    @events = @q.result(distinct: true).order(support_at: :desc)
+    @events = @q.result(distinct: true).order(support_at: :asc)
   
   end
   def week_calender

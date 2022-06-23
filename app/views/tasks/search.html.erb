@@ -53,9 +53,9 @@
     <%@events.each do |event| %>
         <td><%= event.name %></td>
         <td><%= event.dispatch %></td>
-        <td><%= event.support_at %></td>
-        <td><%= event.start_time.strftime("%m月-%d日 %H時:%M分")%></td>
-        <td><%= event.end_time.strftime("%m月-%d日 %H時:%M分") %></td>
+        <td><%= event.support_at.strftime("%Y/%m/%d")%></td>
+        <td><%= event.start_time.strftime("%H時:%M分") %></td>
+        <td><%= event.end_time.strftime("%H時:%M分") %></td>
         <td><%= event.category %></td>
       </tr>
     <% end %>
@@ -63,17 +63,19 @@
 </table>
 
 <div class= 'calender'>
-  <%= month_calendar events: @events do |date, event| %>
-    <%= date %>
-    <% event.each do |event| %>
+  <%= month_calendar events: @events do |date, events| %>
+   <%= date.day %>
+    <% events.each do |event| %>
     <br>
-    <% if user_signed_in? %>
-      <% if event.category ==0%>
+    <% if  user_signed_in? && (event.support_at).day == date.day %>
+      <% if event.dispatch =="平日"%>
         <i class="fa fa-circle notification-circle" style="color: blue;"></i>
-      <% elsif event.category ==1%> 
+      <% elsif event.dispatch == "夜間"%> 
         <i class="fa fa-circle notification-circle" style="color: orange;"></i>
-      <% elsif event.category ==2%> 
-        <i class="fa fa-circle notification-circle" style="color: red;"></i>
+      <% elsif event.dispatch =="緊急"%> 
+        <i class="fa-light fa fa-star" style="color: red;"></i>
+       <% elsif event.dispatch =="夜間緊急"%> 
+        <i class="fa-solid fa fa-star" style="color: red;"></i>
       <% else%> 
         <i class="fa fa-circle notification-circle" style="color: green;"></i>
       <% end %>    

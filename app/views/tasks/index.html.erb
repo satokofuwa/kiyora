@@ -55,24 +55,25 @@
 <% end %>
 
 <table class="table table-sm",id="table03">
-  <thead class="thead-light">
+  <thead class="table-info">
     <tr>
       <th scope="col"><%= t(' ') %></th> 
       <th scope="col"><%= t(' ') %></th>
       <th scope="col"><%= t(' ') %></th>
       <th scope="col"><%= t(' ') %></th>
-      <th scope="col-2"><%= t('.id') %></th>
-      <th scope="col"><%= t('.name') %></th>
-      <th scope="col"><%= t('.dispatch') %></th>
-      <th scope="col"><%= t('.support_at') %></th>
-      <th scope="col"><%= t('.start_time') %></th>
-      <th scope="col"><%= t('.end_time') %></th>
-      <th scope="col"><%= t('.category') %></th>
-      <th scope="col"><%= t('.step') %></th>
-      <th scope="col"><%= t('.sales') %></th>
-      <th scope="col"><%= t('.sales_check') %></th>
-      <th scope="col"><%= t('.admin_check') %></th>
-      <th scope="col"><%= t('.confirmation') %></th>
+      <th scope="col"><%= t(' ') %></th>
+      <th nowrap scope="col-2"><%= t('.id') %></th>
+      <th nowrap scope="col"><%= t('.name') %></th>
+      <th nowrap scope="col"><%= t('.dispatch') %></th>
+      <th nowrap scope="col"><%= t('.support_at') %></th>
+      <th nowrap scope="col"><%= t('.start_time') %></th>
+      <th nowrap scope="col"><%= t('.end_time') %></th>
+      <th nowrap scope="col"><%= t('.category') %></th>
+      <th nowrap scope="col"><%= t('.step') %></th>
+      <th nowrap scope="col"><%= t('.sales') %></th>
+      <th nowrap scope="col"><%= t('.sales_check') %></th>
+      <th nowrap scope="col"><%= t('.admin_check') %></th>
+      <th nowrap scope="col"><%= t('.confirmation') %></th>
     </tr>
   </thead>
   <tbody>
@@ -90,8 +91,8 @@
         <td nowrap><%= task.name %></td>
         <td><%= task.dispatch %></td>
         <td nowrap><%= task.support_at.strftime("%m月%d日").to_s %></td>
-        <td><%= task.start_time.strftime("%m月%d日").to_s %></td>
-        <td><%= task.end_time.strftime("%m月%d日").to_s %></td>
+        <td><%= task.start_time.strftime("%H時%m分").to_s %></td>
+        <td><%= task.end_time.strftime("%H時%m分").to_s %></td>
         <td><%= task.category %></td>
         <td><%= task.step %></td>
         <td><%= task.sales %></td>
@@ -102,5 +103,5 @@
     <% end %>
   </tbody>
 </table>
-<div class='p-top__paginate'><%= paginate @tasks %></div>
+<%= paginate @tasks %>
 <% end %>

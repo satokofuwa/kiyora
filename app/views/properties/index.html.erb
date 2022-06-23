@@ -1,10 +1,7 @@
-
 <nav class="navbar navbar-light bg-light">
   <a class="navbar-brand" href="#">
-  <div class=row>
     <img src="document.png" width="30" height="30" class="d-inline-block align-top" alt="">
-     <h4 class="title"><%= "物件一覧" %></h4>
-  </div>
+    <%= "物件一覧" %>
   </a>
 </nav>
   <%= search_form_for( @q, url: properties_path) do |f| %>
@@ -22,16 +19,16 @@
 <div class="test_box font_test">
 <%= flash[:notice] %>
 <table class="table table-sm">
-  <thead class="thead-light">
+  <thead class="table-info">
     <tr>
       <th scope="col"><%= t(' ') %></th>
       <th scope="col"><%= t(' ') %></th>
-      <th scope="col"><%= t('物件名') %></th>
-      <th scope="col"><%= t('郵便番号') %></th>
-      <th scope="col"><%= t('都道府県') %></th>
-      <th scope="col"><%= t('市町村') %></th>
-      <th scope="col"><%= t('住所') %></th>
-      <th scope="col"><%= t('電話番号') %></th>
+      <th nowrap scope="col"><%= t('物件名') %></th>
+      <th nowrap scope="col"><%= t('郵便番号') %></th>
+      <th nowrap scope="col"><%= t('都道府県') %></th>
+      <th nowrap scope="col"><%= t('市町村') %></th>
+      <th nowrap scope="col"><%= t('住所') %></th>
+      <th nowrap scope="col"><%= t('電話番号') %></th>
     </tr>
   </thead>
   <tbody>
@@ -52,6 +49,7 @@
     <% end %>
   </tbody>
   </table>
+  <%= paginate @properties %>
 <% end %>
  </div>
 
