@@ -50,6 +50,8 @@ ActiveRecord::Schema.define(version: 2022_06_20_063558) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "prefecture"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["task_id"], name: "index_customers_on_task_id"
   end
 

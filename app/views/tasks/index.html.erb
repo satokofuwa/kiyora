@@ -81,7 +81,7 @@
       <tr>       
         <td><%= link_to "#{t('helpers.submit.links.do_edit')}", edit_task_path(task.id) , class:'btn btn-outline-primary btn-sm text-nowrap '%></td>
         <% if current_user.admin? %>
-          <td><%= link_to t('helpers.submit.links.delete'), task_path(task.id), method: :delete, class: 'btn btn-outline-danger btn-sm', data: { confirm: '削除してよろしいですか？'} %></td>
+          <td nowrap><%= link_to t('helpers.submit.links.delete'), task_path(task.id), method: :delete, class: 'btn btn-outline-danger btn-sm', data: { confirm: '削除してよろしいですか？'} %></td>
         <%end%>
         <td nowrap><%= link_to t('helpers.submit.links.do_show'), task_path(task.id),class: "btn btn-outline-success btn-sm", style: '--bs-btn-font-size: .55rem;'%></td>
             <% @customer = Customer.find_by(task_id: task.id) %>
