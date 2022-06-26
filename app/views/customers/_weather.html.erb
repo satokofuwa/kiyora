@@ -135,18 +135,33 @@ function buildHTML(weather, i) {
 
     marker = new google.maps.Marker({
       // コントローラーで定義した変数から緯度経度を呼び出し、マーカーを立てる
+      map,
+      draggable: true,
+      animation: google.maps.Animation.DROP,
       position: {
         lat: gon.customer.latitude,
         lng: gon.customer.longitude
       },
       map: map
     });
-  }
+     marker.addListener("click", toggleBounce);
+      const trafficLayer = new google.maps.TrafficLayer();
+     trafficLayer.setMap(map);
+    }
+    function toggleBounce() {
+     if (marker.getAnimation() !== null) {
+      marker.setAnimation(null);
+    } else {
+    marker.setAnimation(google.maps.Animation.BOUNCE);
+    }
+    }   
+    window.initMap = initMap;
 </script>
 
 <script
     src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API'] %>&callback=initMap"  
     async defer>
+    
 </script>
   </div><!--container-->
   </div><!--font-->
