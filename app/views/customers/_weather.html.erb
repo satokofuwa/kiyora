@@ -117,53 +117,45 @@ function buildHTML(weather, i) {
     
  
   <div id="map"></div>
-<script>
-  let map;
-  function initMap() {
-    var lat = parseFloat(document.getElementById('lat'));
-    var lng = parseFloat(document.getElementById('lng'));
-    // geocoderを初期化
-    geocoder = new google.maps.Geocoder()
-    map = new google.maps.Map(document.getElementById('map'), {
-      // コントローラーで定義した変数から緯度経度を呼び出し、マップの中心に表示
-      center: {
-        lat: gon.customer.latitude,
-        lng: gon.customer.longitude
-      },
-      // マップの倍率はお好みで
-      zoom: 17,
-    });
+<script type="text/javascript">
+      function initMap() {
+        var test ={lat: <%= @customer.latitude %>, lng: <%= @customer.longitude %>};
+        var map = new google.maps.Map(document.getElementById('map'), {
+                  zoom: 17, 
+                  center: test
+                  });
+        var transitLayer = new google.maps.TransitLayer();
+        transitLayer.setMap(map);
 
-    marker = new google.maps.Marker({
-      // コントローラーで定義した変数から緯度経度を呼び出し、マーカーを立てる
-      map,
-      draggable: true,
-      animation: google.maps.Animation.DROP,
-      position: {
-        lat: gon.customer.latitude,
-        lng: gon.customer.longitude
-      },
-      map: map
-    });
-     marker.addListener("click", toggleBounce);
-      const trafficLayer = new google.maps.TrafficLayer();
-     trafficLayer.setMap(map);
-    }
-    function toggleBounce() {
-     if (marker.getAnimation() !== null) {
-      marker.setAnimation(null);
-    } else {
-    marker.setAnimation(google.maps.Animation.BOUNCE);
-    }
-    }   
-    window.initMap = initMap;
-</script>
+        var contentString = '住所：<%= @customer.address %>';
+        var infowindow = new google.maps.InfoWindow({
+          content: contentString
+        });
 
-<script
-    src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API'] %>&callback=initMap"  
-    async defer>
-    
-</script>
+        var marker = new google.maps.Marker({
+                      position:test,
+                      map: map,
+                      title: contentString
+                    });
+
+        marker.addListener('click', function() {
+          infowindow.open(map, marker);
+        });
+      }
+    </script>
+
+    <script async defer
+                  src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API'] %>&callback=initMap">
+    </script>
+
+    <style type="text/css">
+      #map { height: 600px;
+            width: 100%;}
+    </style>
+
+    <!--mapの表示-->
+    <div id="map" class = "col-lg-6"></div>
+
   </div><!--container-->
   </div><!--font-->
 </div>
