@@ -110,7 +110,9 @@ end
     admin:                  true,
     reset_password_token:   "#{000000+n}",
     reset_password_sent_at: "#{000000+n}",
-    remember_created_at:    '2022/01/01' 
+    remember_created_at:    '2022/01/01',
+    uid: n,
+    provider: n,
   )
 end
 
@@ -188,6 +190,8 @@ end
       email:                  email,
       password:               '000000',
       admin:                  false,
-      remember_created_at:    '2022/01/01' 
+      remember_created_at:    '2022/01/01',
+      uid: n+5,
+      provider: n+5,
     )
   end
