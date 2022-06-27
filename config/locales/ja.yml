@@ -272,7 +272,7 @@ ja:
       name: 作業名
       step: 進捗情報
       sales_check: 売上確認
-      admin_check: 承認欄
+      admin_check: 承認
       vehicle: 作業車両
       sales: 売上金
       confirmation: 作業確認

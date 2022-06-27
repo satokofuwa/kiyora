@@ -6,8 +6,7 @@ class AgentsController < ApplicationController
   def index
     @agents = Agent.all
     @q= Agent.ransack(params[:q])
-    @agents = @q.result(distinct: true).order(created_at: :desc)
-    @agents = Agent.page(params[:page]).per(10)
+    @agents = @q.result(distinct: true).order(created_at: :desc).page(params[:page]).per(5)
   end
 
   def new
