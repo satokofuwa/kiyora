@@ -1,10 +1,14 @@
+
+  <div class=row-md> 
 <%- if controller_name != 'sessions' %>
-  <%= link_to "ログイン", new_session_path(resource_name) %><br />
+  <%= link_to "ログイン", new_session_path(resource_name), class: 'btn btn-primary btn-sm' %><br />
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <%= link_to "サインアップ", new_registration_path(resource_name) %><br />
+  <%= link_to "サインアップ", new_registration_path(resource_name), class: 'btn btn-primary btn-sm'%><br />
 <% end %>
+
+</div>
 
 <!--<%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
   <%= link_to "パスワードをお忘れですか？", new_password_path(resource_name) %><br />
@@ -20,6 +24,9 @@
 
 <%- if devise_mapping.omniauthable? %>
   <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), method: :post %><br />
+    
+    <img src="/google.png" width="30" height="30" class="d-inline-block align-top" alt="">
+    <%= link_to " #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), method: :post %><br />
+
   <% end %>
 <% end %>

@@ -78,7 +78,6 @@
             <br>
       </div>
       <div class="col-lg-5 mb-5 mb-lg-0 position-relative">
-       
         <div class="card bg-glass">
           <div class="card-body px-4 py-2 px-md-5">
             <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -97,11 +96,11 @@
                 </div>
               <% end %>
               <div class="actions">
-               <%= f.submit "ログイン", class: 'btn btn-primary'%>
+               <%= f.submit "ログイン", class: 'btn btn-primary btn-sm'%>
               </div>
             <% end %>
             <%= render "devise/shared/links" %>
-              </div>
+          </div>
             <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
             <%= link_to '管理者ゲストログイン', users_admin_guest_sign_in_path, method: :post %>
           </div>
