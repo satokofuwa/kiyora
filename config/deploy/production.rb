@@ -1,4 +1,4 @@
-server '35.79.28.110', user: 'app', roles: %w{app db web}
+server '54.238.222.253', user: 'app', roles: %w{app db web}
 set :ssh_options, keys: '/Users/satokofuwa/.ssh/id_rsa'
 # server-based syntax
 # ======================

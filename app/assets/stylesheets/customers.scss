@@ -3,12 +3,13 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 .weather {
   overflow: hidden;
+
 }
 .weather__content--report{
   font-size:  8px; 
   float: right;
-
   text-align: center;
+ 
 }
 .test_box {
   font-size:  12px;       /* 文字サイズ指定 */
@@ -27,3 +28,8 @@ a:hover {
   color:#999;
   text-decoration:underline;
   }
+#map {
+    height: 500px;
+    width: 100%;
+  }
+

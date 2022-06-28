@@ -13,7 +13,7 @@
       <%= f.search_field :id_eq,class: 'form-control form-control-sm', placeholder: "例　10000"%>
     </div>
     <div class="col">作業日検索
-      <%= f.date_field :support_at_eq, include_blank: true,class: 'form-control form-control-sm'%>
+      <%= f.date_field :support_at_gteq, include_blank: true,class: 'form-control form-control-sm'%>
     </div>   
      <div class="col"><br>       
       <%= f.submit '売上検索', class: 'btn btn-outline-primary btn-sm' %>

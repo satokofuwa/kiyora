@@ -75,7 +75,7 @@ class TasksController < ApplicationController
   def sales
     @tasks = Task.all
     @q = Task.ransack(params[:q])
-    @events = @q.result(distinct: true).order(support_at: :desc)
+    @events = @q.result(distinct: true).order(support_at: :asc)
   end
   def task_search
     @tasks = Task.all

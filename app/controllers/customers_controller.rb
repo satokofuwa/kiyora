@@ -12,7 +12,7 @@ class CustomersController < ApplicationController
         @prefecture= prefecture.romaji
       end
     end
-
+    gon.customer = @customer
   end
   private
   def customer_params 
