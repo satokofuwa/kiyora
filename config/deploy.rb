@@ -6,7 +6,7 @@ set :application, 'kiyora'
 
 # cloneするgitのレポジトリ
 # （xxxxxxxx：ユーザ名、yyyyyyyy：アプリケーション名）
-set :repo_url, 'https://github.com/satokofuwa/kiyora2.git'
+set :repo_url, 'https://github.com/satokofuwa/kiyora.git'
 
 # deployするブランチ。デフォルトでmainを使用している場合、masterをmainに変更してください。
 set :branch, ENV['BRANCH'] || 'main'
