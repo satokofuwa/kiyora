@@ -19,7 +19,7 @@ class User < ApplicationRecord
   end
 
   def self.guest
-    find_or_create_by!(email: 'guest@example.com') do |user|
+    find_or_create_by!(email: 'guest@example.com',uid: 13, provider:13) do |user|
       user.password = SecureRandom.urlsafe_base64
       user.admin = false
       # user.confirmed_at = Time.now  # Confirmable を使用している場合は必要
@@ -27,7 +27,7 @@ class User < ApplicationRecord
     end
   end
   def self.admin_guest
-    find_or_create_by!(email: 'guest_admin@example.com') do |user|
+    find_or_create_by!(email: 'guest_admin@example.com',uid: 14, provider:14) do |user|
       user.password = SecureRandom.urlsafe_base64
       user.admin = true
     end
