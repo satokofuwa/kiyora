@@ -192,6 +192,6 @@ end
       admin:                  false,
       remember_created_at:    '2022/01/01',
       uid: n+5,
-      provider: n+5,
+      provider: n+5
     )
   end
