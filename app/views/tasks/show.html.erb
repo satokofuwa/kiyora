@@ -6,12 +6,16 @@
         <div class="col-2">伝票番号 :</div>
         <b><div class="col-2"><%= @task.id%></div></b>
       </div>
+<<<<<<< HEAD
       </div><!--<div class="p-3 mb-2 bg-light text-dark"-->
+=======
+      </div><!--p-3 mb-2 bg-light text-dark-->
+>>>>>>> ea73388 (footer全画面修正)
       
     <div class="p-3 mb-2 bg-light text-dark">
       <div class =row>
         <div class="col-2">出動区分 : </div>
-          <% if @task.dispatch == "平日" %>
+          <% if @task.dispatch =="平日" %>
             <div class="col-2"><i class= "fa fa-circle notification-circle" style="color: blue;"><%= @task.dispatch %></i></div>
           <% elsif @task.dispatch == "夜間" %> 
             <div class="col-2"><i class= "fa fa-circle notification-circle" style="color: orange;"><%= @task.dispatch %></i></div>
@@ -57,15 +61,19 @@
       <div class="col-2">郵便番号 : </div>
       <div class="col-2"><%= property.zip %></div>
     </div>
-      <div class =row>
+    <div class =row>
       <div class="col-2">市町村 : </div>
       <div class="col-10"> <%= property.city %></div>
     </div>
-      <div class =row>
+    <div class =row>
       <div class="col-2">住所 : </div>
       <div class="col-10"> <%= property.address %></div>
     </div>
+<<<<<<< HEAD
   </div><!--div class="p-3 mb-2 bg-light text-dark"-->
+=======
+  </div>
+>>>>>>> ea73388 (footer全画面修正)
   <% end %>
 
   <% @task.agents.each do |agent| %>
@@ -75,11 +83,11 @@
         <div class="col-2">管理会社名 : </div>
         <div class="col-10"> <%= agent.name %></div>
       </div>
-        <div class =row>
+      <div class =row>
         <div class="col-2">郵便番号　: </div>
         <div class="col-2"><%= agent.zip %></div>
       </div>
-        <div class =row>
+      <div class =row>
         <div class="col-2">市町村 : </div>
         <div class="col-10"> <%= agent.city %></div>
       </div>
@@ -87,9 +95,16 @@
         <div class="col-2">住所 : </div>
         <div class="col-10"><%=agent.address %></div>
       </div>
+<<<<<<< HEAD
     </div> <!--div class="p-3 mb-2 bg-light text-dark"-->
     <% end %>
   </div>
 </div>
 
+=======
+    </div>
+  <% end %>
+    </div>
+      </div>
+>>>>>>> ea73388 (footer全画面修正)
    

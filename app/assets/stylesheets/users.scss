@@ -1,3 +1,9 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.wrapper{
+  min-height: 200vh;
+  position: relative;/*←相対位置*/
+  padding-bottom: 110px;/*←footerの高さ*/
+  box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
+}
