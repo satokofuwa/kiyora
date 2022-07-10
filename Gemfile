@@ -35,12 +35,16 @@ gem 'omniauth-rails_csrf_protection'
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 9f5c94b (unicorn追加)
 gem 'unicorn'
 =======
 >>>>>>> a6cf31d (OAuth機能実装)
 =======
 gem 'unicorn'
 >>>>>>> 3d16499 (unicorn追加)
+<<<<<<< HEAD
 =======
 gem 'unicorn'
 >>>>>>> ac26c38 (syuusei)
@@ -49,6 +53,8 @@ gem 'unicorn'
 =======
 >>>>>>> a6cf31d (OAuth機能実装)
 >>>>>>> ffc7d67 (OAuth機能実装)
+=======
+>>>>>>> 9f5c94b (unicorn追加)
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
