@@ -175,7 +175,6 @@ end
     )
   end
 
-
   5.times do |n| #ユーザー作成
     name  = Gimei.kanji
     email = Faker::Internet.email
