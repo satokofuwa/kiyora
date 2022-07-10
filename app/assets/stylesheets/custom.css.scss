@@ -30,45 +30,12 @@ small {
     float: left; 
   }
 .wrapper{
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-  min-height: 90vh;
-=======
-=======
-<<<<<<< Updated upstream
->>>>>>> b6ab2ef (ページネーション追加による検索機能不具合修正)
-  min-height: 70vh;
->>>>>>> ea73388 (footer全画面修正)
-  position: relative;/*←相対位置*/
-  padding-bottom: 80px;/*←footerの高さ*/
-=======
+
   min-height: 100vh;
   position: relative;/*←相対位置*/
   padding-bottom: 110px;/*←footerの高さ*/
->>>>>>> Stashed changes
-=======
-=======
->>>>>>> b76f582 (ページネーション追加による検索機能不具合修正)
+
   min-height: 90vh;
-=======
-=======
-<<<<<<< Updated upstream
->>>>>>> b6ab2ef (ページネーション追加による検索機能不具合修正)
-  min-height: 70vh;
->>>>>>> ea73388 (footer全画面修正)
-  position: relative;/*←相対位置*/
-  padding-bottom: 80px;/*←footerの高さ*/
-<<<<<<< HEAD
->>>>>>> 19a9b2e (footer全画面修正)
-=======
-=======
-  min-height: 100vh;
-  position: relative;/*←相対位置*/
-  padding-bottom: 110px;/*←footerの高さ*/
->>>>>>> Stashed changes
->>>>>>> b76f582 (ページネーション追加による検索機能不具合修正)
   box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
 }
 
@@ -110,18 +77,9 @@ small {
   .test_box {
   font-size:  12px;       /* 文字サイズ指定 */
   margin:  20px;          /* 空白指定 */
-<<<<<<< Updated upstream
+
   background-color: white;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> 19a9b2e (footer全画面修正)
-=======
-=======
->>>>>>> Stashed changes
->>>>>>> b76f582 (ページネーション追加による検索機能不具合修正)
+
 }
 .font_test {
   font-family:  serif;    /* フォントの種類指定 */
@@ -131,7 +89,7 @@ small {
 }
 .navbar-brand{
 float: left; 
-<<<<<<< Updated upstream
+
 font-size:  20px; 
 }
 .nav-item{
@@ -140,8 +98,7 @@ font-size:  20px;
 a{
   font-family:  serif;
   position:center;
-=======
->>>>>>> Stashed changes
+
 }
 .pagination {
   justify-content: center;
