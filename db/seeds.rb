@@ -195,9 +195,13 @@ end
       remember_created_at:    '2022/01/01',
       uid: n+5,
 <<<<<<< HEAD
+<<<<<<< HEAD
       provider: n+5
 =======
       provider: n+5,
 >>>>>>> 9d7ff65 (uid provider 追加　seedデータ修正)
+=======
+      provider: n+5
+>>>>>>> 639a99a (売上情報画面修正)
     )
   end
