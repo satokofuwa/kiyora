@@ -114,9 +114,25 @@ function buildHTML(weather, i) {
       </div>
     </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
     
  
   <div id="map"></div>
+<<<<<<< HEAD
+=======
+=======
+<<<<<<< HEAD
+<div id="map"></div>
+<<<<<<< HEAD
+>>>>>>> f256a0b (herokuでの地図情報表示されない不具合)
+=======
+=======
+    
+ 
+  <div id="map"></div>
+>>>>>>> 62c0077 (地図情報編集)
+>>>>>>> 58eab6f (地図情報編集)
+>>>>>>> 63fc46e (地図情報編集)
 <script>
   let map;
   function initMap() {
@@ -133,6 +149,7 @@ function buildHTML(weather, i) {
       // マップの倍率はお好みで
       zoom: 17,
     });
+<<<<<<< HEAD
 
     marker = new google.maps.Marker({
       // コントローラーで定義した変数から緯度経度を呼び出し、マーカーを立てる
@@ -166,9 +183,48 @@ function buildHTML(weather, i) {
     
 </script>
 =======
+<<<<<<< HEAD
+>>>>>>> 63fc46e (地図情報編集)
+=======
 =======
 >>>>>>> f007332 (地図情報削除)
+<<<<<<< HEAD
 >>>>>>> da20559 (地図情報削除)
+=======
+=======
+
+    marker = new google.maps.Marker({
+      // コントローラーで定義した変数から緯度経度を呼び出し、マーカーを立てる
+      map,
+      draggable: true,
+      animation: google.maps.Animation.DROP,
+      position: {
+        lat: gon.customer.latitude,
+        lng: gon.customer.longitude
+      },
+      map: map
+    });
+     marker.addListener("click", toggleBounce);
+      const trafficLayer = new google.maps.TrafficLayer();
+     trafficLayer.setMap(map);
+    }
+    function toggleBounce() {
+     if (marker.getAnimation() !== null) {
+      marker.setAnimation(null);
+    } else {
+    marker.setAnimation(google.maps.Animation.BOUNCE);
+    }
+    }   
+    window.initMap = initMap;
+</script>
+
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API'] %>&callback=initMap"  
+    async defer>
+    
+</script>
+>>>>>>> 62c0077 (地図情報編集)
+>>>>>>> 63fc46e (地図情報編集)
   </div><!--container-->
   </div><!--font-->
 </div>
