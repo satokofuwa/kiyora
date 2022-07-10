@@ -207,6 +207,7 @@ end
 >>>>>>> 801ba37 (uid, provider 設定の為ゲストログインできない機能実装)
 =======
 
+
   5.times do |n| #ユーザー作成
 >>>>>>> 0d064c5 (syuusei)
     name  = Gimei.kanji
