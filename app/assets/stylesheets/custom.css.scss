@@ -30,9 +30,13 @@ small {
     float: left; 
   }
 .wrapper{
+<<<<<<< HEAD
   min-height: 90vh;
+=======
+  min-height: 70vh;
+>>>>>>> ea73388 (footer全画面修正)
   position: relative;/*←相対位置*/
-  padding-bottom: 110px;/*←footerの高さ*/
+  padding-bottom: 80px;/*←footerの高さ*/
   box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
 }
 
@@ -72,14 +76,9 @@ small {
   font-family:  serif; 
   }
   .test_box {
-
   font-size:  12px;       /* 文字サイズ指定 */
   margin:  20px;          /* 空白指定 */
   background-color: white;
-
-
- 
-  
 }
 .font_test {
   font-family:  serif;    /* フォントの種類指定 */
