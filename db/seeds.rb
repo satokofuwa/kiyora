@@ -174,28 +174,8 @@ end
       created_at: '2022-01-01 00:00:00',
     )
   end
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-  
-  5.times do |n| #管理者作成
-=======
-=======
-=======
->>>>>>> 541afd4 (uid, provider 設定の為ゲストログインできない機能実装)
 
-=======
->>>>>>> f5604c1 (uid provider設定によるゲストログインができない件を修正)
->>>>>>> de3efff (uid provider設定によるゲストログインができない件を修正)
   5.times do |n| #ユーザー作成
-<<<<<<< HEAD
->>>>>>> f5604c1 (uid provider設定によるゲストログインができない件を修正)
-=======
-=======
-  
-  5.times do |n| #管理者作成
->>>>>>> 83cfb1f (uid, provider 設定の為ゲストログインできない機能実装)
->>>>>>> 541afd4 (uid, provider 設定の為ゲストログインできない機能実装)
     name  = Gimei.kanji
     email = Faker::Internet.email
     tel = Faker::Number.number(digits: 11)
@@ -213,14 +193,6 @@ end
       admin:                  false,
       remember_created_at:    '2022/01/01',
       uid: n+5,
-<<<<<<< HEAD
-<<<<<<< HEAD
       provider: n+5
-=======
-      provider: n+5,
->>>>>>> 9d7ff65 (uid provider 追加　seedデータ修正)
-=======
-      provider: n+5
->>>>>>> 639a99a (売上情報画面修正)
     )
   end
