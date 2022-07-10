@@ -32,6 +32,7 @@ small {
 .wrapper{
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   min-height: 90vh;
 =======
 =======
@@ -46,6 +47,14 @@ small {
   position: relative;/*←相対位置*/
   padding-bottom: 110px;/*←footerの高さ*/
 >>>>>>> Stashed changes
+=======
+  min-height: 90vh;
+=======
+  min-height: 70vh;
+>>>>>>> ea73388 (footer全画面修正)
+  position: relative;/*←相対位置*/
+  padding-bottom: 80px;/*←footerの高さ*/
+>>>>>>> 19a9b2e (footer全画面修正)
   box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
 }
 
@@ -89,8 +98,11 @@ small {
   margin:  20px;          /* 空白指定 */
 <<<<<<< Updated upstream
   background-color: white;
+<<<<<<< HEAD
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> 19a9b2e (footer全画面修正)
 }
 .font_test {
   font-family:  serif;    /* フォントの種類指定 */
