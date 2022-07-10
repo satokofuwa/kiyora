@@ -174,8 +174,12 @@ end
       created_at: '2022-01-01 00:00:00',
     )
   end
+<<<<<<< HEAD
   
   5.times do |n| #管理者作成
+=======
+  5.times do |n| #ユーザー作成
+>>>>>>> f5604c1 (uid provider設定によるゲストログインができない件を修正)
     name  = Gimei.kanji
     email = Faker::Internet.email
     tel = Faker::Number.number(digits: 11)
