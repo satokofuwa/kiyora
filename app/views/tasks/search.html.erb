@@ -4,7 +4,6 @@
      <%= "スケジュール管理" %>
   </a>
 </nav>
-
 <div class="test_box font_test">
 <%= search_form_for @q , url:search_tasks_path,scope: :task, method: :get, local: true do |f| %> 
   <div class="container">
@@ -94,10 +93,9 @@
           <%= event.vehicle+"号車"%>
           <%= link_to event.name,task_path(event) %>
     <% end %>
-  <% end %>
-       </div>
-    </div>
-  </div>
+    <% end %>
+
 <% end %>
+</div>
     
 

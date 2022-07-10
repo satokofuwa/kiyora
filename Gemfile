@@ -31,7 +31,18 @@ gem 'geocoder'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
 gem 'unicorn'
+=======
+>>>>>>> a6cf31d (OAuth機能実装)
+=======
+gem 'unicorn'
+>>>>>>> 3d16499 (unicorn追加)
+=======
+gem 'unicorn'
+>>>>>>> ac26c38 (syuusei)
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
