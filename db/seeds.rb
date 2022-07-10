@@ -174,7 +174,20 @@ end
       created_at: '2022-01-01 00:00:00',
     )
   end
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+  
+  5.times do |n| #管理者作成
+=======
+=======
+
+=======
+>>>>>>> f5604c1 (uid provider設定によるゲストログインができない件を修正)
+>>>>>>> de3efff (uid provider設定によるゲストログインができない件を修正)
+>>>>>>> eb18b28 (uid provider設定によるゲストログインができない件を修正)
   5.times do |n| #ユーザー作成
 
     name  = Gimei.kanji
