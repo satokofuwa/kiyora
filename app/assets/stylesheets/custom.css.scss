@@ -30,12 +30,9 @@ small {
     float: left; 
   }
 .wrapper{
-
-  min-height: 100vh;
+  min-height: 90vh;
   position: relative;/*←相対位置*/
   padding-bottom: 110px;/*←footerの高さ*/
-
-  min-height: 90vh;
   box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
 }
 
@@ -75,11 +72,10 @@ small {
   font-family:  serif; 
   }
   .test_box {
+
   font-size:  12px;       /* 文字サイズ指定 */
   margin:  20px;          /* 空白指定 */
-
   background-color: white;
-
 }
 .font_test {
   font-family:  serif;    /* フォントの種類指定 */
@@ -89,7 +85,6 @@ small {
 }
 .navbar-brand{
 float: left; 
-
 font-size:  20px; 
 }
 .nav-item{
@@ -98,9 +93,7 @@ font-size:  20px;
 a{
   font-family:  serif;
   position:center;
-
 }
 .pagination {
   justify-content: center;
 }
-

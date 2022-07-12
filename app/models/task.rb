@@ -40,14 +40,7 @@ class Task < ApplicationRecord
   accepts_nested_attributes_for :task_partners, allow_destroy: true
   accepts_nested_attributes_for :task_workers, allow_destroy: true
 
-<<<<<<< Updated upstream
-  enum category: { "消火器販売":0, "設備清掃":1, "排水管定期作業":2, "専有部排水不良":3, "共用設備点検":4, "駐車排水ピット清掃":5, "定期設備点検":6 ,"雨水桝清掃":7, "貯水槽清掃":8, "満水警報発報":9, "緊急出動":10, "消防設備定期点検":11, "特定建築物定期検査":12 }
-  enum dispatch: { "平日":0, "夜間":1, "緊急":2, "夜間緊急":3, "その他":4 }
-  enum confirmation: { "確認済": 0, "未確認": 1 }
-  enum step: { "起票":0, "日程連絡":1, "調整":2, "作業日決定":3, "お知らせ送付":4, "請求書発行":5, "送付":6, "売上":7 }
-  enum manager: { "有": 1, "無": 2 }
-  enum sales_check: { "未確定": 0, "確定": 1 }
-  enum admin_check: { "未承認": 0, "承認": 1 }
+
 
   def sum_of_sales
     sales * 0.1
@@ -60,7 +53,6 @@ class Task < ApplicationRecord
     self.support_at
   end
   
-=======
   enum category: {"消火器販売":0, "設備清掃":1, "排水管定期作業":2, "専有部排水不良":3, "共用設備点検":4, "駐車排水ピット清掃":5, "定期設備点検":6 ,"雨水桝清掃":7, "貯水槽清掃":8, "満水警報発報":9, "緊急出動":10, "消防設備定期点検":11, "特定建築物定期検査":12}
   enum dispatch: {"平日":0, "夜間":1, "緊急":2, "夜間緊急":3, "その他":4}
   enum confirmation: {"確認済": 0, "未確認": 1}
@@ -69,5 +61,5 @@ class Task < ApplicationRecord
   enum sales_check: {"未確定": 0, "確定": 1}
   enum admin_check: {"未承認": 0, "承認": 1}
   enum admin: { "管理者": true, "社員": false} 
->>>>>>> Stashed changes
+
 end
