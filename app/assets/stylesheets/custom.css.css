@@ -1,0 +1,96 @@
+@charset "UTF-8";
+/* universal */
+html {
+  overflow-y: scroll;
+}
+
+body {
+  padding-top: 10px;
+  position: relative;
+  background-color: rgb(220, 233, 235);
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+}
+
+.center h1 {
+  margin-bottom: 10px;
+}
+
+small {
+  float: left;
+}
+
+.wrapper {
+  min-height: 150vh;
+  position: relative; /*←相対位置*/
+  padding-bottom: 110px; /*←footerの高さ*/
+  box-sizing: border-box; /*←全て含めてmin-height:100vhに*/
+}
+
+.footer-menu {
+  width: 100%;
+  color: #808080;
+  background: #e5e5e5;
+  text-align: center;
+  padding: 30px;
+  position: absolute; /*←絶対位置*/
+  bottom: 0; /*下に固定*/
+}
+
+.footer-menu a {
+  color: #808080;
+  text-decoration: none;
+}
+
+.footer-menu a:hover {
+  text-decoration: underline;
+}
+
+.footer-menu .menu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: 12px;
+  font-family: serif;
+}
+
+.footer-menu .menu li {
+  margin: 0;
+  padding: 0 20px;
+}
+
+.footer-menu .copyright {
+  margin: 0;
+  padding: 20px 0 0 0;
+  font-family: serif;
+}
+
+.test_box {
+  font-size: 12px; /* 文字サイズ指定 */
+  margin: 20px; /* 空白指定 */
+}
+
+.font_test {
+  font-family: serif; /* フォントの種類指定 */
+}
+
+.background {
+  background-image: url("<%= asset_path('home.png') %>");
+}
+
+.navbar-brand {
+  float: left;
+}

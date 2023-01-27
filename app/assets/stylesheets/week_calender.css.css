@@ -1,0 +1,9 @@
+@charset "UTF-8";
+.test_box {
+  font-size: 8px; /* 文字サイズ指定 */
+  margin: 20px; /* 空白指定 */
+}
+
+.font_test {
+  font-family: serif; /* フォントの種類指定 */
+}

@@ -1,0 +1,42 @@
+.title {
+  width: 30;
+  height: 30;
+  padding-left: 30px;
+  line-height: 30px;
+}
+
+.date {
+  float: left;
+}
+
+.thead-light {
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+.navbar-light {
+  font-size: 20px;
+}
+
+.container-fluid {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1200px;
+}
+
+/* table02 */
+#table02 th, #table02 td {
+  text-align: center;
+  width: 20%;
+  min-width: 130px;
+  padding: 10px;
+  height: 60px;
+}
+
+/* tab */
+@media only screen and (max-width: 768px) {
+  #table03 {
+    overflow-x: scroll;
+    white-space: nowrap;
+  }
+}
