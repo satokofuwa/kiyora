@@ -32,6 +32,7 @@ gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
 gem 'unicorn'
+gem 'psych', '~> 3.1'
 
 
 group :development, :test do
